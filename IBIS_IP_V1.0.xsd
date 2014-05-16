@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/IP-KOM" elementFormDefault="qualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_CustomerInformationService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_JourneyInformationService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_DeviceManagementService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_LocationService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_NetworkLocationService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_SystemManagementService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_SystemDocumentationService_v1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_TicketInformationService_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_PassengerCountingService_V1.0.xsd"/>
+	<!--==== CustomerInformationService ====-->
+	<xs:element name="CustomerInformationService.GetAllDataResponse" type="CustomerInformationService.GetAllDataResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetCurrentAnnouncementResponse" type="CustomerInformationService.GetCurrentAnnouncementResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetCurrentConnectionInformationResponse" type="CustomerInformationService.GetCurrentConnectionInformationResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetCurrentDisplayContentResponse" type="CustomerInformationService.GetCurrentDisplayContentResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetCurrentStopPointResponse" type="CustomerInformationService.GetCurrentStopPointResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetCurrentStopIndexResponse" type="CustomerInformationService.GetCurrentStopIndexResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetTripDataResponse" type="CustomerInformationService.GetTripDataResponseStructure"/>
+	<xs:element name="CustomerInformationService.GetVehicleDataResponse" type="CustomerInformationService.GetVehicleDataResponseStructure"/>
+	<xs:element name="CustomerInformationService.RetrievePartialStopSequenceRequest" type="CustomerInformationService.RetrievePartialStopSequenceRequestStructure"/>
+	<xs:element name="CustomerInformationService.RetrievePartialStopSequenceResponse" type="CustomerInformationService.RetrievePartialStopSequenceResponseStructure"/>
+	<xs:group name="CustomerInformationServiceOperations">
+		<xs:sequence>
+			<xs:element name="CustomerInformationService.GetAllDataResponse" type="CustomerInformationService.GetAllDataResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetCurrentAnnouncementResponse" type="CustomerInformationService.GetCurrentAnnouncementResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetCurrentConnectionInformationResponse" type="CustomerInformationService.GetCurrentConnectionInformationResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetCurrentDisplayContentResponse" type="CustomerInformationService.GetCurrentDisplayContentResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetCurrentStopPointResponse" type="CustomerInformationService.GetCurrentStopPointResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetCurrentStopIndexResponse" type="CustomerInformationService.GetCurrentStopIndexResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetTripDataResponse" type="CustomerInformationService.GetTripDataResponseStructure"/>
+			<xs:element name="CustomerInformationService.GetVehicleDataResponse" type="CustomerInformationService.GetVehicleDataResponseStructure"/>
+			<xs:element name="CustomerInformationService.RetrievePartialStopSequenceRequest" type="CustomerInformationService.RetrievePartialStopSequenceRequestStructure"/>
+			<xs:element name="CustomerInformationService.RetrievePartialStopSequenceResponse" type="CustomerInformationService.RetrievePartialStopSequenceResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== JourneyInformationService ====-->
+	<xs:element name="JourneyInformationService.GetAllDataResponse" type="JourneyInformationService.GetAllDataResponseStructure"/>
+	<xs:element name="JourneyInformationService.GetCurrentBlockRefResponse" type="JourneyInformationService.GetCurrentBlockRefResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrievePartialTripSequenceRequest" type="JourneyInformationService.RetrievePartialTripSequenceRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrievePartialTripSequenceResponse" type="JourneyInformationService.RetrievePartialTripSequenceResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationRequest" type="JourneyInformationService.RetrieveSpecificBlockInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationResponse" type="JourneyInformationService.RetrieveSpecificBlockInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationRequest" type="JourneyInformationService.RetrieveSpecificStopInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationResponse" type="JourneyInformationService.RetrieveSpecificStopInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTSPPointInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTSPPointInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTimingPointInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTimingPointInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequest" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponse" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequest" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponse" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllDisplayContentsResponse" type="JourneyInformationService.ListAllDisplayContentsResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllLineInformationResponse" type="JourneyInformationService.ListAllLineInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllDestinationInformationResponse" type="JourneyInformationService.ListAllDestinationInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllViaPointResponse" type="JourneyInformationService.ListAllViaPointResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllAdditionalDisplayInformationResponse" type="JourneyInformationService.ListAllAdditionalDisplayInformationResponseStructure"/>
+	<xs:element name="JourneyInformationService.ListAllRoutesResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineRequest" type="JourneyInformationService.RetrieveAllRoutesPerLineRequestStructure"/>
+	<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+	<xs:element name="JourneyInformationService.SetBlockNumberRequest" type="JourneyInformationService.SetBlockNumberRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetTripRefRequest" type="JourneyInformationService.SetTripRefRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetDisplayContentRequest" type="JourneyInformationService.SetDisplayContentRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetCurrentTripIndexRequest" type="JourneyInformationService.SetCurrentTripIndexRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetCurrentStopIndexRequest" type="JourneyInformationService.SetCurrentStopIndexRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetAdditionalAnnouncementRequest" type="JourneyInformationService.SetAdditionalAnnouncementRequestStructure"/>
+	<xs:element name="JourneyInformationService.SetAdditionalTextMessageRequest" type="JourneyInformationService.SetAdditionalTextMessageRequestStructure"/>
+	<xs:group name="JourneyInformationServiceGroup">
+		<xs:sequence>
+			<xs:element name="JourneyInformationService.GetAllDataResponse" type="JourneyInformationService.GetAllDataResponseStructure"/>
+			<xs:element name="JourneyInformationService.GetCurrentBlockRefResponse" type="JourneyInformationService.GetCurrentBlockRefResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrievePartialTripSequenceRequest" type="JourneyInformationService.RetrievePartialTripSequenceRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrievePartialTripSequenceResponse" type="JourneyInformationService.RetrievePartialTripSequenceResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationRequest" type="JourneyInformationService.RetrieveSpecificBlockInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationResponse" type="JourneyInformationService.RetrieveSpecificBlockInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationRequest" type="JourneyInformationService.RetrieveSpecificStopInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationResponse" type="JourneyInformationService.RetrieveSpecificStopInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTSPPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTSPPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTimingPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTimingPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequest" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponse" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequest" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponse" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllDisplayContentsResponse" type="JourneyInformationService.ListAllDisplayContentsResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllLineInformationResponse" type="JourneyInformationService.ListAllLineInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllDestinationInformationResponse" type="JourneyInformationService.ListAllDestinationInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllViaPointResponse" type="JourneyInformationService.ListAllViaPointResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllAdditionalDisplayInformationResponse" type="JourneyInformationService.ListAllAdditionalDisplayInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllRoutesResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineRequest" type="JourneyInformationService.RetrieveAllRoutesPerLineRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+			<xs:element name="JourneyInformationService.SetBlockNumberRequest" type="JourneyInformationService.SetBlockNumberRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetTripRefRequest" type="JourneyInformationService.SetTripRefRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetDisplayContentRequest" type="JourneyInformationService.SetDisplayContentRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetCurrentTripIndexRequest" type="JourneyInformationService.SetCurrentTripIndexRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetCurrentStopIndexRequest" type="JourneyInformationService.SetCurrentStopIndexRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetAdditionalAnnouncementRequest" type="JourneyInformationService.SetAdditionalAnnouncementRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetAdditionalTextMessageRequest" type="JourneyInformationService.SetAdditionalTextMessageRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== SystemDocumentationService ====-->
+	<xs:element name="SystemDocumentationService.GetSystemConfigurationResponse" type="SystemDocumentationService.GetSystemConfigurationResponseStructure"/>
+	<xs:element name="SystemDocumentationService.StoreSystemConfigurationRequest" type="SystemDocumentationService.StoreSystemConfigurationRequestStructure"/>
+	<xs:element name="SystemDocumentationService.RetrieveLogMessagesRequest" type="SystemDocumentationService.RetrieveLogMessagesRequestStructure"/>
+	<xs:element name="SystemDocumentationService.RetrieveLogMessagesResponse" type="SystemDocumentationService.RetrieveLogMessagesResponseStructure"/>
+	<xs:element name="SystemDocumentationService.StoreLogMessagesRequest" type="SystemDocumentationService.StoreLogMessagesRequestStructure"/>
+	<xs:group name="SystemDocumentationServiceGroup">
+		<xs:sequence>
+			<xs:element name="SystemDocumentationService.GetSystemConfigurationResponse" type="SystemDocumentationService.GetSystemConfigurationResponseStructure"/>
+			<xs:element name="SystemDocumentationService.StoreSystemConfigurationRequest" type="SystemDocumentationService.StoreSystemConfigurationRequestStructure"/>
+			<xs:element name="SystemDocumentationService.RetrieveLogMessagesRequest" type="SystemDocumentationService.RetrieveLogMessagesRequestStructure"/>
+			<xs:element name="SystemDocumentationService.RetrieveLogMessagesResponse" type="SystemDocumentationService.RetrieveLogMessagesResponseStructure"/>
+			<xs:element name="SystemDocumentationService.StoreLogMessagesRequest" type="SystemDocumentationService.StoreLogMessagesRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== BeaconLocationService ====-->
+	<xs:element name="BeaconLocationService.GetDataResponse" type="BeaconLocationService.GetDataResponseStructure"/>
+	<!--==== TicketingService ====-->
+	<xs:element name="TicketingService.SetRazziaRequest" type="TicketingService.SetRazziaRequestStructure"/>
+	<xs:element name="TicketingService.GetTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+	<xs:element name="TicketingService.RetrieveTariffInformationRequest" type="TicketingService.RetrieveTariffInformationRequestStructure"/>
+	<xs:element name="TicketingService.RetrieveTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+	<xs:element name="TicketingService.ValidateTicketRequest" type="TicketingService.ValidateTicketRequestStructure"/>
+	<xs:element name="TicketingService.ValidateTicketResponse" type="TicketingService.ValidateTicketResponseStructure"/>
+	<xs:element name="TicketingService.GetValidationResult" type="TicketingService.GetValidationResultResponseStructure"/>
+	<xs:group name="TicketingServiceGroup">
+		<xs:sequence>
+			<xs:element name="TicketingService.SetRazziaRequest" type="TicketingService.SetRazziaRequestStructure"/>
+			<xs:element name="TicketingService.GetTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+			<xs:element name="TicketingService.RetrieveTariffInformationRequest" type="TicketingService.RetrieveTariffInformationRequestStructure"/>
+			<xs:element name="TicketingService.RetrieveTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+			<xs:element name="TicketingService.ValidateTicketRequest" type="TicketingService.ValidateTicketRequestStructure"/>
+			<xs:element name="TicketingService.ValidateTicketResponse" type="TicketingService.ValidateTicketResponseStructure"/>
+			<xs:element name="TicketingService.GetValidationResult" type="TicketingService.GetValidationResultResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== SystemManagementService ====-->
+	<xs:element name="SystemManagementService.GetDeviceStatusResponse" type="SystemManagementService.GetDeviceStatusResponseStructure"/>
+	<xs:element name="SystemManagementService.GetServiceStatusResponse" type="SystemManagementService.GetServiceStatusResponseStructure"/>
+	<xs:group name="SystemManagementServiceGroup">
+		<xs:sequence>
+			<xs:element name="SystemManagementService.GetDeviceStatusResponse" type="SystemManagementService.GetDeviceStatusResponseStructure"/>
+			<xs:element name="SystemManagementService.GetServiceStatusResponse" type="SystemManagementService.GetServiceStatusResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== DeviceManagementService ====-->
+	<xs:element name="DeviceManagementService.GetDeviceInformationResponse" type="DeviceManagementService.GetDeviceInformationResponseStructure"/>
+	<xs:element name="DeviceManagementService.GetDeviceConfigurationResponse" type="DeviceManagementService.GetDeviceConfigurationResponseStructure"/>
+	<xs:element name="DeviceManagementService.SetDeviceConfigurationRequest" type="DeviceManagementService.SetDeviceConfigurationRequestStructure"/>
+	<xs:element name="DeviceManagementService.GetDeviceStatusResponse" type="DeviceManagementService.GetDeviceStatusResponseStructure"/>
+	<xs:element name="DeviceManagementService.GetDeviceErrorMessagesResponse" type="DeviceManagementService.GetDeviceErrorMessagesResponseStructure"/>
+	<xs:element name="DeviceManagementService.GetServiceInformationResponse" type="DeviceManagementService.GetServiceInformationResponseStructure"/>
+	<xs:element name="DeviceManagementService.GetServiceStatusResponse" type="DeviceManagementService.GetServiceStatusResponseStructure"/>
+	<xs:element name="DeviceManagementService.StartServiceRequest" type="DeviceManagementService.StartServiceRequestStructure"/>
+	<xs:element name="DeviceManagementService.RestartServiceRequest" type="DeviceManagementService.RestartServiceRequestStructure"/>
+	<xs:element name="DeviceManagementService.StopServiceRequest" type="DeviceManagementService.StopServiceRequestStructure"/>
+	<xs:group name="DeviceManagementServiceGroup">
+		<xs:sequence>
+			<xs:element name="DeviceManagementService.GetDeviceInformationResponse" type="DeviceManagementService.GetDeviceInformationResponseStructure"/>
+			<xs:element name="DeviceManagementService.GetDeviceConfigurationResponse" type="DeviceManagementService.GetDeviceConfigurationResponseStructure"/>
+			<xs:element name="DeviceManagementService.SetDeviceConfigurationRequest" type="DeviceManagementService.SetDeviceConfigurationRequestStructure"/>
+			<xs:element name="DeviceManagementService.GetDeviceStatusResponse" type="DeviceManagementService.GetDeviceStatusResponseStructure"/>
+			<xs:element name="DeviceManagementService.GetDeviceErrorMessagesResponse" type="DeviceManagementService.GetDeviceErrorMessagesResponseStructure"/>
+			<xs:element name="DeviceManagementService.GetServiceInformationResponse" type="DeviceManagementService.GetServiceInformationResponseStructure"/>
+			<xs:element name="DeviceManagementService.GetServiceStatusResponse" type="DeviceManagementService.GetServiceStatusResponseStructure"/>
+			<xs:element name="DeviceManagementService.StartServiceRequest" type="DeviceManagementService.StartServiceRequestStructure"/>
+			<xs:element name="DeviceManagementService.RestartServiceRequest" type="DeviceManagementService.RestartServiceRequestStructure"/>
+			<xs:element name="DeviceManagementService.StopServiceRequest" type="DeviceManagementService.StopServiceRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== PassengerCountingService ====-->
+	<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
+	<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
+	<xs:group name="PassengerCountingServiceGroup">
+		<xs:sequence>
+			<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== GeneralOperations ====-->
+	<xs:group name="SubscriptionResponseGroup">
+		<xs:choice>
+			<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="UnsubscribeResponse" type="UnsubscribeResponseStructure"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="SubscriptionRequestGroup">
+		<xs:choice>
+			<xs:element name="SubscribeRequest" type="SubscribeRequestStructure"/>
+			<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
+		</xs:choice>
+	</xs:group>
+	<!--==== Subscription-Requests ====-->
+	<xs:element name="SubscribeRequest" type="SubscribeRequestStructure"/>
+	<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
+	<!--==== Subscription-Responses ====-->
+	<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
+	<xs:element name="UnsubscribeResponse" type="UnsubscribeResponseStructure"/>
+	<!--==== DataAccepted-Response ====-->
+	<xs:element name="DataAcceptedResponse" type="DataAcceptedResponseStructure"/>
+</xs:schema>

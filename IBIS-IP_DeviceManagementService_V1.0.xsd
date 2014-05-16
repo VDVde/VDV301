@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!--  IVU Traffic Technologies AG, Carsten Weise -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--==== DeviceManagementService 2.3 2013-06-28 ==== -->
+	<xs:complexType name="DeviceManagementService.GetDeviceInformationResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetDeviceInformationResponseData" type="DeviceManagementService.GetDeviceInformationResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceInformationResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="DeviceInformation" type="DeviceInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceConfigurationResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetDeviceConfigurationResponseData" type="DeviceManagementService.GetDeviceConfigurationResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceConfigurationResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="DeviceID" type="IBIS-IP.int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.SetDeviceConfigurationRequestStructure">
+		<xs:sequence>
+			<xs:element name="DeviceID" type="IBIS-IP.int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceStatusResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetDeviceStatusResponseData" type="DeviceManagementService.GetDeviceStatusResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceStatusResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="DeviceState" type="DeviceStateEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceErrorMessagesResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetDeviceErrorMessagesResponseData" type="DeviceManagementService.GetDeviceErrorMessagesResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetDeviceErrorMessagesResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ErrorMessage" type="MessageStructure" minOccurs="10" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Only Warnings and Errors, no StateMessages</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetServiceInformationResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetServiceInformationResponseData" type="DeviceManagementService.GetServiceInformationResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetServiceInformationResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ServiceInformationList" type="ServiceInformationListStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetServiceStatusResponseStructure">
+		<xs:choice>
+			<xs:element name="DeviceManagementService.GetServiceStatusResponseData" type="DeviceManagementService.GetServiceStatusResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.GetServiceStatusResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ServiceSpecificationWithStateList" type="ServiceSpecificationWithStateListStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.StartServiceRequestStructure">
+		<xs:sequence>
+			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.StopServiceRequestStructure">
+		<xs:sequence>
+			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeviceManagementService.RestartServiceRequestStructure">
+		<xs:sequence>
+			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
