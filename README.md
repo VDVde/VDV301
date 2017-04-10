@@ -15,7 +15,7 @@ Projekt forken und im Fork in einem Branch ihrer Wahl Änderungen vorbereiten.
 
 Sind die Änderungen in einem veröffentlichungswürdigen Zustand, wird ein Pull
 Request gestellt. Dieser wird dann im zugehörigen Webforum
-http://vdv301.gorba.com/ diskutiert. Wird beschlossen, den Pull Request zu
+https://forum.vdv.de diskutiert. Wird beschlossen, den Pull Request zu
 akzeptieren, nimmt einer der Contributors den Merge vor.
 
 Jeder offiziell durch den VDV (im Rahmen des dort zuständigen Arbeitskreises)
@@ -25,4 +25,4 @@ freigegebene Stand bekommt dann ein entsprechendes Tag (z.B. `VDV-301-1.0`).
 
 * http://www.vdv.de - Verband Deutscher Verkehrsunternehmen e.V. (VDV)
 * http://www.vdv.de/ip-kom-oev.aspx - Internet Protokoll basierte Kommunikationsdienste im ÖV (IP-KOM-ÖV)
-* http://vdv301.gorba.com - Inoffizielles Forum für Unternehemn, die die Norm VDV 301 umsetzen
+* https://forum.vdv.de - Webforum für Unternehmen, die die Norm VDV 301 umsetzen
