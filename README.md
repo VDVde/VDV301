@@ -23,6 +23,6 @@ freigegebene Stand bekommt dann ein entsprechendes Tag (z.B. `VDV-301-1.0`).
 
 ### Weblinks
 
-* http://www.vdv.de - Verband Deutscher Verkehrsunternehmen e.V. (VDV)
-* http://www.vdv.de/ip-kom-oev.aspx - Internet Protokoll basierte Kommunikationsdienste im ÖV (IP-KOM-ÖV)
+* https://www.vdv.de - Verband Deutscher Verkehrsunternehmen e.V. (VDV)
+* https://www.vdv.de/ip-kom-oev.aspx - Internet Protokoll basierte Kommunikationsdienste im ÖV (IP-KOM-ÖV)
 * https://forum.vdv.de - Webforum für Unternehmen, die die Norm VDV 301 umsetzen
