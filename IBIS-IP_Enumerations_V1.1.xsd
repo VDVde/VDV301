@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--==== Definition of Enumerations-->
+	<xs:simpleType name="ConnectionStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information whether a connection will rest protected</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ConnectionBroken"/>
+			<xs:enumeration value="ConnectionOK"/>
+			<xs:enumeration value="NoInformationAvailable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConnectionTypeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Value, which is necessary for distinction between an Interchange and a Connection</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Interchange"/>
+			<xs:enumeration value="ProtectedConnection"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataIntervallEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DistanceData"/>
+			<xs:enumeration value="GNSSData"/>
+			<xs:enumeration value="Heartbeat"/>
+			<xs:enumeration value="NetworkLocationData"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceClassEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OnBoardUnit"/>
+			<xs:enumeration value="SideDisplay"/>
+			<xs:enumeration value="FrontDisplay"/>
+			<xs:enumeration value="InteriorDisplay"/>
+			<xs:enumeration value="Validator"/>
+			<xs:enumeration value="TicketVendingMachine"/>
+			<xs:enumeration value="AnnouncementSystem"/>
+			<xs:enumeration value="MMI"/>
+			<xs:enumeration value="VideoSystem"/>
+			<xs:enumeration value="APC"/>
+			<xs:enumeration value="MobileInterface"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="TestDevice"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="defective"/>
+			<xs:enumeration value="notavailable"/>
+			<xs:enumeration value="running"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceTaskEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="restart"/>
+			<xs:enumeration value="start_standby"/>
+			<xs:enumeration value="stop_standby"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorCountingObjectClassEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adult"/>
+			<xs:enumeration value="Child"/>
+			<xs:enumeration value="Bike"/>
+			<xs:enumeration value="WheelChair"/>
+			<xs:enumeration value="Pram"/>
+			<xs:enumeration value="Unidentified"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorCountingQualityEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Defect"/>
+			<xs:enumeration value="Regular"/>
+			<xs:enumeration value="Sabotage"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorOpenStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the state of the doors in a vehicle</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DoorsOpen"/>
+			<xs:enumeration value="AllDoorsClosed"/>
+			<xs:enumeration value="SingleDoorOpen"/>
+			<xs:enumeration value="SingleDoorClosed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorOperationStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Locked"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="EmergencyRelease"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ErrorCodeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DataEstimated"/>
+			<xs:enumeration value="FaultData"/>
+			<xs:enumeration value="NoScheduleDataAvailable"/>
+			<xs:enumeration value="DeviceMissing"/>
+			<xs:enumeration value="NoServiceResponse"/>
+			<xs:enumeration value="ImportantDataNotAvailable"/>
+			<xs:enumeration value="DataNotValid"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExitSideEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the ExitSide (sic!)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="both"/>
+			<xs:enumeration value="left"/>
+			<xs:enumeration value="right"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSCoordinateSystemEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the GNSS-Coordinate-System</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CH1903"/>
+			<xs:enumeration value="ETSR89"/>
+			<xs:enumeration value="IERS"/>
+			<xs:enumeration value="NAD27"/>
+			<xs:enumeration value="NAD83"/>
+			<xs:enumeration value="WGS84"/>
+			<xs:enumeration value="WGS72"/>
+			<xs:enumeration value="SGS85"/>
+			<xs:enumeration value="P90"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSQualityEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the GNSS-Quality</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dGPS"/>
+			<xs:enumeration value="Estimated"/>
+			<xs:enumeration value="GPS"/>
+			<xs:enumeration value="NotValid"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSTypeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the type of GNSS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GPS"/>
+			<xs:enumeration value="Glonass"/>
+			<xs:enumeration value="Galileo"/>
+			<xs:enumeration value="Beidou"/>
+			<xs:enumeration value="IRNSS"/>
+			<xs:enumeration value="other"/>
+			<xs:enumeration value="DeadReckoning"/>
+			<xs:enumeration value="MixedGNSSTypes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IBIS-IP-VersionEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1.1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JourneyModeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the kind of a trip</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NoTrip"/>
+			<xs:enumeration value="AdditionalTrip"/>
+			<xs:enumeration value="ServiceTrip"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LocationStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the location in a very general way</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AfterStop"/>
+			<xs:enumeration value="AtStop"/>
+			<xs:enumeration value="BeforeStop"/>
+			<xs:enumeration value="BetweenStop"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageTypeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Status"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Error"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RouteDeviationEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information whether the vehicle is onroute or offroute</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="onroute"/>
+			<xs:enumeration value="offroute"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceNameEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CustomerInformationService"/>
+			<xs:enumeration value="DeviceManagementService"/>
+			<xs:enumeration value="JourneyInformationService"/>
+			<xs:enumeration value="BeaconLocationService"/>
+			<xs:enumeration value="DistanceLocationService"/>
+			<xs:enumeration value="GNSSLocationService"/>
+			<xs:enumeration value="NetworkLocationService"/>
+			<xs:enumeration value="SystemDocumentationService"/>
+			<xs:enumeration value="SystemManagementService"/>
+			<xs:enumeration value="TicketingService"/>
+			<xs:enumeration value="TimeService"/>
+			<xs:enumeration value="TestService"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="defective"/>
+			<xs:enumeration value="notrunning"/>
+			<xs:enumeration value="running"/>
+			<xs:enumeration value="standby"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SystemDocumentationInformationEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ErrorMessage"/>
+			<xs:enumeration value="StatusMessage"/>
+			<xs:enumeration value="WarningMessage"/>
+			<xs:enumeration value="All"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TicketRazziaInformationEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="razzia"/>
+			<xs:pattern value="norazzia"/>
+			<xs:enumeration value="razzia"/>
+			<xs:enumeration value="norazzia"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TicketValidationEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information about the result of ticket validation</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="valid"/>
+			<xs:enumeration value="notvalid"/>
+			<xs:enumeration value="NoCard"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VehicleModeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="air"/>
+			<xs:enumeration value="bus"/>
+			<xs:enumeration value="coach"/>
+			<xs:enumeration value="ferry"/>
+			<xs:enumeration value="metro"/>
+			<xs:enumeration value="rail"/>
+			<xs:enumeration value="tram"/>
+			<xs:enumeration value="underground"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

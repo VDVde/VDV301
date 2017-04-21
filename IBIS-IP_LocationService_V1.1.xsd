@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
+	<!--==== Service Definitions ====-->
+	<xs:element name="DistanceLocationService.Data" type="DistanceLocationService.DataStructure"/>
+	<xs:element name="GNSSLocationService.Data" type="GNSSLocationService.DataStructure"/>
+	<!--==== Structure Definitions ====-->
+	<xs:complexType name="GNSSLocationService.DataStructure">
+		<xs:sequence>
+			<xs:element name="latitude" type="GNSSCoordinateStructure"/>
+			<xs:element name="longitude" type="GNSSCoordinateStructure"/>
+			<xs:element name="altitude" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="time" type="IBIS-IP.time" minOccurs="0"/>
+			<xs:element name="date" type="IBIS-IP.date" minOccurs="0"/>
+			<xs:element name="SpeedOverGround" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="SignalQuality" type="GNSSQualityEnumeration" minOccurs="0"/>
+			<xs:element name="NumberOfSatellites" type="IBIS-IP.int" minOccurs="0"/>
+			<xs:element name="HoriziontalDilutionOfPrecision" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="VerticalDilutionOfPrecision" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="TrackDegreeTrue" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="TrackDegreeMagnetic" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="GNSSType" type="GNSSTypeEnumeration"/>
+			<xs:element name="GNSSCoordinateSystem" type="GNSSCoordinateSystemEnumeration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Information on the CoordinateSystem of the GNSS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DistanceLocationService.DataStructure">
+		<xs:sequence>
+			<xs:element name="Distance" type="IBIS-IP.double">
+				<xs:annotation>
+					<xs:documentation>travelled distance [m]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Odometer-Pulses" type="IBIS-IP.int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BeaconLocationService.GetDataResponseStructure">
+		<xs:choice>
+			<xs:element name="Data" type="BeaconLocationService.DataContent"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="BeaconLocationService.DataContent">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="BeaconCode" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Code of a beacon</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BeaconTime" type="IBIS-IP.time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Time, at which the beacon is passed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BeaconDistance" type="IBIS-IP.double">
+				<xs:annotation>
+					<xs:documentation>Value of the travelled distance, at which the beacon is passed [m]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

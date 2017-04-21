@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
+	<!--==== Service Definitions ====-->
+	<xs:element name="NetworkLocationService.Data" type="NetworkLocationService.DataStructure"/>
+	<!--==== Structure Definitions ====-->
+	<xs:complexType name="NetworkLocationService.DataStructure">
+		<xs:sequence>
+			<xs:element name="CurrentTripRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Ref to the CurrentTrip from JourneyInformationService</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NextPointRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Ref to the CurrentPoint on the CurrentTrip from JourneyInformationService</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DistanceToNextPoint" type="IBIS-IP.double">
+				<xs:annotation>
+					<xs:documentation>Value, which gives the distance to the next Point on the current trip in [m]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NextStopPointRef" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>Ref to the next StopPoint on the CurrentTrip from JourneyInformationService</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DistanceToNextStopPoint" type="IBIS-IP.double">
+				<xs:annotation>
+					<xs:documentation>Value, which gives the distance to the next Stoppoint on the current trip in [m]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RouteDeviation" type="RouteDeviationEnumeration" minOccurs="0"/>
+			<xs:element name="LocationState" type="LocationStateEnumeration" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
