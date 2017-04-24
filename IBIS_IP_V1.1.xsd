@@ -9,7 +9,7 @@
 	<xs:include schemaLocation="IBIS-IP_LocationService_V1.1.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_NetworkLocationService_V1.1.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_SystemManagementService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_SystemDocumentationService_v1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_SystemDocumentationService_V1.1.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_TicketInformationService_V1.1.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_PassengerCountingService_V1.1.xsd"/>
 	<!--==== CustomerInformationService ====-->
