@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_common_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations.xsd"/>
 	<!--FGI-Ermittlung-->
 	<!--==== Group Definitions ====-->
 	<xs:group name="VehicleInformationGroup">

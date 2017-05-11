@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/IP-KOM" elementFormDefault="qualified">
-	<xs:include schemaLocation="IBIS-IP_common_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_CustomerInformationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_JourneyInformationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_DeviceManagementService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_LocationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_NetworkLocationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_SystemManagementService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_SystemDocumentationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_TicketInformationService_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_PassengerCountingService_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_CustomerInformationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_JourneyInformationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_DeviceManagementService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_LocationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_NetworkLocationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_SystemManagementService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_SystemDocumentationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_TicketInformationService.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_PassengerCountingService.xsd"/>
 	<!--==== CustomerInformationService ====-->
 	<xs:element name="CustomerInformationService.GetAllDataResponse" type="CustomerInformationService.GetAllDataResponseStructure"/>
 	<xs:element name="CustomerInformationService.GetCurrentAnnouncementResponse" type="CustomerInformationService.GetCurrentAnnouncementResponseStructure"/>

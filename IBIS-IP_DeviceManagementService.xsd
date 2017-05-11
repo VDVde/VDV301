@@ -2,8 +2,8 @@
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
 <!--  IVU Traffic Technologies AG, Carsten Weise -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_common_V1.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations.xsd"/>
 	<!--==== DeviceManagementService 2.3 2013-06-28 ==== -->
 	<xs:complexType name="DeviceManagementService.GetDeviceInformationResponseStructure">
 		<xs:choice>
