@@ -184,7 +184,7 @@
 					<xs:documentation>Describes the mode of the leaving vehicle </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ExpectedDepatureTime" type="IBIS-IP.dateTime" minOccurs="0">
+			<xs:element name="ExpectedDepartureTime" type="IBIS-IP.dateTime" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Information, at which time the leaving vehicle will depart</xs:documentation>
 				</xs:annotation>
