@@ -162,7 +162,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<!--==== GetOperationStructure Definitions ====-->
-	<!--==== RetreiveOperation Definitions ====-->
+	<!--==== RetrieveOperation Definitions ====-->
 	<xs:complexType name="CustomerInformationService.RetrievePartialStopSequenceRequestStructure">
 		<xs:sequence>
 			<xs:element name="StartingStopIndex" type="IBIS-IP.int"/>

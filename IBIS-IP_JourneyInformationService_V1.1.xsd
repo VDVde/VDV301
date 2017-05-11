@@ -273,7 +273,7 @@
 			<xs:element name="AdditionalAnnouncement" type="AdditionalAnnouncementStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AdditionalTextmessage ++-->
+	<!--++ AdditionalTextMessage ++-->
 	<xs:complexType name="JourneyInformationService.SetAdditionalTextMessageRequestStructure">
 		<xs:sequence>
 			<xs:element name="AdditionalTextMessage" type="IBIS-IP.string"/>

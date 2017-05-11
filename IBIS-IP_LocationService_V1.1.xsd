@@ -17,7 +17,7 @@
 			<xs:element name="SpeedOverGround" type="IBIS-IP.double" minOccurs="0"/>
 			<xs:element name="SignalQuality" type="GNSSQualityEnumeration" minOccurs="0"/>
 			<xs:element name="NumberOfSatellites" type="IBIS-IP.int" minOccurs="0"/>
-			<xs:element name="HoriziontalDilutionOfPrecision" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="HorizontalDilutionOfPrecision" type="IBIS-IP.double" minOccurs="0"/>
 			<xs:element name="VerticalDilutionOfPrecision" type="IBIS-IP.double" minOccurs="0"/>
 			<xs:element name="TrackDegreeTrue" type="IBIS-IP.double" minOccurs="0"/>
 			<xs:element name="TrackDegreeMagnetic" type="IBIS-IP.double" minOccurs="0"/>
