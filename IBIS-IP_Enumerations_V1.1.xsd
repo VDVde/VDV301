@@ -218,6 +218,7 @@
 			<xs:enumeration value="SystemManagementService"/>
 			<xs:enumeration value="TicketingService"/>
 			<xs:enumeration value="TimeService"/>
+			<xs:enumeration value="PassengerCountingService"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ServiceStateEnumeration">
