@@ -40,14 +40,14 @@
 			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
 			<xs:element name="ServiceStartList" type="ServiceStartListStructure"/>
 			<xs:element name="DeviceSpecificationList" type="DeviceSpecificationListStructure"/>
-			<xs:element name="HeartbeatIntervall" type="IBIS-IP.double" minOccurs="0"/>
+			<xs:element name="HeartbeatInterval" type="IBIS-IP.double" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="SystemDocumentationService.StoreSystemConfigurationRequestStructure">
 		<xs:sequence>
 			<xs:element name="ServiceStartList" type="ServiceStartListStructure"/>
 			<xs:element name="DeviceSpecificationList" type="DeviceSpecificationListStructure"/>
-			<xs:element name="HeartbeatIntervall" type="IBIS-IP.duration" minOccurs="0"/>
+			<xs:element name="HeartbeatInterval" type="IBIS-IP.duration" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!--==== Structure Definitions ====-->
