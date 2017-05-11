@@ -5,7 +5,7 @@
 	<!--==== DataDefinitions ====-->
 	<xs:complexType name="AdditionalAnnouncementStructure">
 		<xs:annotation>
-			<xs:documentation>Structure for decscribing the informations for an additional announcement</xs:documentation>
+			<xs:documentation>Structure for describing the information for an additional announcement</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="AnnouncementRef" type="IBIS-IP.NMTOKEN">
@@ -26,17 +26,17 @@
 			<xs:choice minOccurs="0">
 				<xs:element name="ImmediateInformation" type="IBIS-IP.boolean">
 					<xs:annotation>
-						<xs:documentation>true, if the additional annoucement should be pronounced immiditaley</xs:documentation>
+						<xs:documentation>true, if the additional announcement should be pronounced immediately</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="PeriodicalInformation" type="IBIS-IP.duration">
 					<xs:annotation>
-						<xs:documentation>period in which the addional announcement should be played </xs:documentation>
+						<xs:documentation>period in which the additional announcement should be played </xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="SpecificPoint" type="SpecificPointStructure">
 					<xs:annotation>
-						<xs:documentation>describes a specific point, where the addional announcement should be played</xs:documentation>
+						<xs:documentation>describes a specific point, where the additional announcement should be played</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 			</xs:choice>
@@ -44,7 +44,7 @@
 	</xs:complexType>
 	<xs:complexType name="AnnouncementStructure">
 		<xs:annotation>
-			<xs:documentation>Structure for decscribing the informations for an regular announcement</xs:documentation>
+			<xs:documentation>Structure for describing the information for an regular announcement</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="AnnouncementRef" type="IBIS-IP.NMTOKEN">
@@ -98,10 +98,10 @@
 			</xs:element>
 			<xs:element name="ShortName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Shortname of the beaon point</xs:documentation>
+					<xs:documentation>Shortname of the beacon point</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="Desciption" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Description" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Text, which gives some additional information on the beacon point</xs:documentation>
 				</xs:annotation>
@@ -112,12 +112,12 @@
 		<xs:sequence>
 			<xs:element name="CardApplInformationLength" type="IBIS-IP.unsignedInt">
 				<xs:annotation>
-					<xs:documentation>Length of the bytearray of applikationdata</xs:documentation>
+					<xs:documentation>Length of the byte array of application data</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="CardApplInformationData" type="IBIS-IP.byte" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Applikationdata from Card as Byte-Array </xs:documentation>
+					<xs:documentation>Application data from card as Byte-Array </xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -127,12 +127,12 @@
 			<xs:element name="CardTicketDataID" type="IBIS-IP.unsignedLong"/>
 			<xs:element name="CardTicketDataLength" type="IBIS-IP.unsignedInt">
 				<xs:annotation>
-					<xs:documentation>Length of the bytearray of ticketdata</xs:documentation>
+					<xs:documentation>Length of the byte array of ticket data</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="CardTicketData" type="IBIS-IP.byte" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Ticketdata from Card as  Byte-Array</xs:documentation>
+					<xs:documentation>Ticket data from card as  Byte-Array</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -166,7 +166,7 @@
 			</xs:element>
 			<xs:element name="DisplayContent" type="DisplayContentStructure">
 				<xs:annotation>
-					<xs:documentation>Structure for desccribing the information which is shown on a head- or sidesign</xs:documentation>
+					<xs:documentation>Structure for describing the information which is shown on a front display or side display</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Platform" type="IBIS-IP.string" minOccurs="0">
@@ -203,7 +203,7 @@
 			</xs:element>
 			<xs:element name="VersionRef" type="IBIS-IP.NMTOKEN">
 				<xs:annotation>
-					<xs:documentation>Versionreference of the data</xs:documentation>
+					<xs:documentation>Version reference of the data</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -225,7 +225,7 @@
 			</xs:element>
 			<xs:element name="DestinationShortName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>Shorttext of the destination if there is limited space</xs:documentation>
+					<xs:documentation>Short text of the destination if there is limited space</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -267,7 +267,7 @@
 	</xs:complexType>
 	<xs:complexType name="DisplayContentStructure">
 		<xs:annotation>
-			<xs:documentation>Structure for describing the information for a headsign or a sidesign</xs:documentation>
+			<xs:documentation>Structure for describing the information for a front display or a side display</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="DisplayContentRef" type="IBIS-IP.NMTOKEN" minOccurs="0">
@@ -306,8 +306,7 @@
 		<xs:sequence>
 			<xs:element name="FareZoneID" type="IBIS-IP.NMTOKEN">
 				<xs:annotation>
-					<xs:documentation>unique ID for the 
-farezone</xs:documentation>
+					<xs:documentation>unique ID for the fare zone</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="FareZoneType" type="ZoneType" minOccurs="0"/>
@@ -439,7 +438,7 @@ farezone</xs:documentation>
 			<xs:element name="TimingPoint" type="TimingPointStructure"/>
 			<xs:element name="TSPPoint" type="TSPPointStructure">
 				<xs:annotation>
-					<xs:documentation>Point, where Information for TrafficSignalPriorisation is provided </xs:documentation>
+					<xs:documentation>Point, where Information for TrafficSignal prioritisation is provided </xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:choice>
@@ -659,7 +658,7 @@ farezone</xs:documentation>
 			<xs:element name="TSPPointRef" type="IBIS-IP.NMTOKEN" minOccurs="0"/>
 			<xs:element name="TSPCode" type="IBIS-IP.NMTOKEN"/>
 			<xs:element name="ShortName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="Desciption" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="VehicleStructure">
@@ -916,7 +915,7 @@ farezone</xs:documentation>
 			</xs:element>
 			<xs:element name="Duration" type="IBIS-IP.duration" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Time-Value, which defines the part of the Periodtime in which this Sign-Information should be shown</xs:documentation>
+					<xs:documentation>Time-Value in seconds, which defines the part of the time period in which this Sign-Information should be shown</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
