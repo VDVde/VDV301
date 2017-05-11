@@ -26,12 +26,12 @@
 	<xs:complexType name="DeviceManagementService.GetDeviceConfigurationResponseDataStructure">
 		<xs:sequence>
 			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:element name="DeviceID" type="IBIS-IP.int"/>
+			<xs:element name="DeviceID" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeviceManagementService.SetDeviceConfigurationRequestStructure">
 		<xs:sequence>
-			<xs:element name="DeviceID" type="IBIS-IP.int"/>
+			<xs:element name="DeviceID" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeviceManagementService.GetDeviceStatusResponseStructure">
