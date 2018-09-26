@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!-- Mit XMLSpy v2017 rel. 3  (http://www.altova.com) von Peter Schuessler (DResearch) bearbeitet --> 
+<!-- VideoDienste in "ServiceNameEnumeration" hinzugefügt, Video enumerations entfernt, DeviceStateEnumeration um "readyForShutdown" erweitert, 2018-01-22 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!--==== Definition of Enumerations-->
 	<xs:simpleType name="ConnectionStateEnumeration">
@@ -21,7 +23,7 @@
 			<xs:enumeration value="ProtectedConnection"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="DataIntervallEnumeration">
+	<xs:simpleType name="DataIntervalEnumeration">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="DistanceData"/>
 			<xs:enumeration value="GNSSData"/>
@@ -51,6 +53,7 @@
 			<xs:enumeration value="defective"/>
 			<xs:enumeration value="notavailable"/>
 			<xs:enumeration value="running"/>
+			<xs:enumeration value="readyForShutdown"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="DeviceTaskEnumeration">
@@ -162,11 +165,6 @@
 			<xs:enumeration value="MixedGNSSTypes"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="IBIS-IP-VersionEnumeration">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="1.1"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="JourneyModeEnumeration">
 		<xs:annotation>
 			<xs:documentation>Information on the kind of a trip</xs:documentation>
@@ -205,6 +203,18 @@
 			<xs:enumeration value="unknown"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="RouteDirectionEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the general direction of a route</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Forward"/>
+			<xs:enumeration value="Backward"/>
+			<xs:enumeration value="Clockwise"/>
+			<xs:enumeration value="Counterclockwise"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="ServiceNameEnumeration">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="CustomerInformationService"/>
@@ -214,11 +224,15 @@
 			<xs:enumeration value="DistanceLocationService"/>
 			<xs:enumeration value="GNSSLocationService"/>
 			<xs:enumeration value="NetworkLocationService"/>
+			<xs:enumeration value="PassengerCountingService"/>
 			<xs:enumeration value="SystemDocumentationService"/>
 			<xs:enumeration value="SystemManagementService"/>
 			<xs:enumeration value="TicketingService"/>
 			<xs:enumeration value="TimeService"/>
 			<xs:enumeration value="TestService"/>
+			<xs:enumeration value="VideoLiveService"/>
+			<xs:enumeration value="VideoRecordingService"/>
+			<xs:enumeration value="VideoDisplayService"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ServiceStateEnumeration">
@@ -227,6 +241,7 @@
 			<xs:enumeration value="notrunning"/>
 			<xs:enumeration value="running"/>
 			<xs:enumeration value="standby"/>
+			<xs:enumeration value="starting"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="SystemDocumentationInformationEnumeration">

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- DResearch VideoServices v2.0 naming according to VDV 301 v2.0, add of video enumerations,  Dipl.-Ing (FH) Peter Schüßler, MBA (DResearch Fahrzeugelektronik GmbH), 2018-01-12 -->
+<!-- Include this XSD Scheme to use the IBIS-IP VideoDisplayService  (request of information of all available video sources in the IBIS-IP system) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.0.xsd"/>
+
+	<xs:simpleType name="VideoDisplayStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="On"/>
+			<xs:enumeration value="Off"/>
+			<xs:enumeration value="InvalidViewID"/>
+			<xs:enumeration value="InvalidOperation"/>
+			<xs:enumeration value="NetworkError"/>
+			<xs:enumeration value="NoSync"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VideoViewEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Single"/>
+			<xs:enumeration value="Dual"/>
+			<xs:enumeration value="Quad"/>
+			<xs:enumeration value="1plus5"/>
+			<xs:enumeration value="1plus7"/>
+			<xs:enumeration value="Nona"/>
+			<xs:enumeration value="Black"/>
+			<xs:enumeration value="Sequence"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--==== VideoDisplayService - Operations ====-->
+	<xs:group name="VideoDisplayServiceOperations">
+		<xs:sequence>
+			<xs:element name="VideoDisplayService.ListViewCapabilitiesResponse" type="VideoDisplayService.ListViewCapabilitiesResponseStructure"/>
+			<xs:element name="VideoDisplayService.SetVideoViewRequest" type="VideoDisplayService.SetVideoViewRequestStructure"/>
+			<xs:element name="VideoDisplayService.SetVideoViewResponse" type="VideoDisplayService.SetVideoViewResponseStructure"/>
+			<xs:element name="VideoDisplayService.SetNextViewIndexResponse" type="VideoDisplayService.SetNextViewIndexResponseStructure"/>
+			<xs:element name="VideoDisplayService.GetDisplayStateResponse" type="VideoDisplayService.GetDisplayStateResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ ListViewCapabilities ++-->
+	<xs:element name="VideoDisplayService.ListViewCapabilitiesResponse" type="VideoDisplayService.ListViewCapabilitiesResponseStructure"/>
+	<xs:complexType name="VideoDisplayService.ListViewCapabilitiesResponseStructure">
+		<xs:choice>
+			<xs:element name="ViewID" type="IBIS-IP.int"/>
+			<xs:element name="ViewName" type="IBIS-IP.string"/>
+			<xs:element name="ViewType" type="VideoViewEnumeration"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ SetVideoView ++-->
+	<xs:element name="VideoDisplayService.SetVideoViewRequest" type="VideoDisplayService.SetVideoViewRequestStructure"/>
+	<xs:complexType name="VideoDisplayService.SetVideoViewRequestStructure">
+		<xs:choice>
+			<xs:element name="ViewID" type="IBIS-IP.int"/>
+			<xs:element name="Timeout" type="IBIS-IP.duration"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="VideoDisplayService.SetVideoViewResponse" type="VideoDisplayService.SetVideoViewResponseStructure"/>
+	<xs:complexType name="VideoDisplayService.SetVideoViewResponseStructure">
+		<xs:choice>
+			<xs:element name="State" type="VideoDisplayStateEnumeration"/>
+			<xs:element name="CurrentViewID" type="IBIS-IP.int"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ SetNextViewIndex ++-->
+	<xs:element name="VideoDisplayService.SetNextViewIndexResponse" type="VideoDisplayService.SetNextViewIndexResponseStructure"/>
+	<xs:complexType name="VideoDisplayService.SetNextViewIndexResponseStructure">
+		<xs:choice>
+			<xs:element name="State" type="VideoDisplayStateEnumeration"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ GetDisplayState ++-->
+	<xs:element name="VideoDisplayService.GetDisplayStateResponse" type="VideoDisplayService.GetDisplayStateResponseStructure"/>
+	<xs:complexType name="VideoDisplayService.GetDisplayStateResponseStructure">
+		<xs:choice>
+			<xs:element name="State" type="VideoDisplayStateEnumeration"/>
+			<xs:element name="CurrentViewID" type="IBIS-IP.int"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

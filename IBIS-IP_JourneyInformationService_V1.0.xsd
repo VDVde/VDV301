@@ -3,7 +3,45 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--==== JourneyInformationService Operations ====-->
+	<xs:group name="JourneyInformationServiceGroup">
+		<xs:sequence>
+			<xs:element name="JourneyInformationService.GetAllDataResponse" type="JourneyInformationService.GetAllDataResponseStructure"/>
+			<xs:element name="JourneyInformationService.GetCurrentBlockRefResponse" type="JourneyInformationService.GetCurrentBlockRefResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrievePartialTripSequenceRequest" type="JourneyInformationService.RetrievePartialTripSequenceRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrievePartialTripSequenceResponse" type="JourneyInformationService.RetrievePartialTripSequenceResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationRequest" type="JourneyInformationService.RetrieveSpecificBlockInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationResponse" type="JourneyInformationService.RetrieveSpecificBlockInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationRequest" type="JourneyInformationService.RetrieveSpecificStopInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationResponse" type="JourneyInformationService.RetrieveSpecificStopInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTSPPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTSPPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTimingPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTimingPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequest" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponse" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequest" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponse" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllDisplayContentsResponse" type="JourneyInformationService.ListAllDisplayContentsResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllLineInformationResponse" type="JourneyInformationService.ListAllLineInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllDestinationInformationResponse" type="JourneyInformationService.ListAllDestinationInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllViaPointResponse" type="JourneyInformationService.ListAllViaPointResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllAdditionalDisplayInformationResponse" type="JourneyInformationService.ListAllAdditionalDisplayInformationResponseStructure"/>
+			<xs:element name="JourneyInformationService.ListAllRoutesResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineRequest" type="JourneyInformationService.RetrieveAllRoutesPerLineRequestStructure"/>
+			<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+			<xs:element name="JourneyInformationService.SetBlockNumberRequest" type="JourneyInformationService.SetBlockNumberRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetTripRefRequest" type="JourneyInformationService.SetTripRefRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetDisplayContentRequest" type="JourneyInformationService.SetDisplayContentRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetCurrentTripIndexRequest" type="JourneyInformationService.SetCurrentTripIndexRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetCurrentStopIndexRequest" type="JourneyInformationService.SetCurrentStopIndexRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetAdditionalAnnouncementRequest" type="JourneyInformationService.SetAdditionalAnnouncementRequestStructure"/>
+			<xs:element name="JourneyInformationService.SetAdditionalTextMessageRequest" type="JourneyInformationService.SetAdditionalTextMessageRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
 	<!--==== Structure Definitions ====-->
+	<!--++ GetAllData ++-->
+	<xs:element name="JourneyInformationService.GetAllDataResponse" type="JourneyInformationService.GetAllDataResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.GetAllDataResponseStructure">
 		<xs:choice>
 			<xs:element name="AllData" type="JourneyInformationService.DataContent"/>
@@ -18,6 +56,8 @@
 			<xs:element name="TripSequence" type="TripSequenceStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	<!--++ GetCurrentBlock ++-->
+	<xs:element name="JourneyInformationService.GetCurrentBlockRefResponse" type="JourneyInformationService.GetCurrentBlockRefResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.GetCurrentBlockRefResponseStructure">
 		<xs:choice>
 			<xs:element name="CurrentBlockRefData" type="JourneyInformationService.CurrentBlockRefData"/>
@@ -30,14 +70,15 @@
 			<xs:element name="CurrentBlockRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--==== RetrieveOperation Definitions ====-->
-	<!--++ PartialTripSequence ++-->
+	<!--++ RetrievePartialTripSequence ++-->
+	<xs:element name="JourneyInformationService.RetrievePartialTripSequenceRequest" type="JourneyInformationService.RetrievePartialTripSequenceRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrievePartialTripSequenceRequestStructure">
 		<xs:sequence>
 			<xs:element name="StartingTripIndex" type="IBIS-IP.int"/>
 			<xs:element name="NumberOfTrips" type="IBIS-IP.int"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrievePartialTripSequenceResponse" type="JourneyInformationService.RetrievePartialTripSequenceResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrievePartialTripSequenceResponseStructure">
 		<xs:choice>
 			<xs:element name="PartialTripSequenceData" type="JourneyInformationService.PartialTripSequenceData"/>
@@ -50,24 +91,28 @@
 			<xs:element name="TripSequence" type="TripSequenceStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SpecificBlock ++-->
+	<!--++ RetrieveSpecificBlock ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationRequest" type="JourneyInformationService.RetrieveSpecificBlockInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificBlockInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="BlockRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBlockInformationResponse" type="JourneyInformationService.RetrieveSpecificBlockInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificBlockInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificBlockInformationData" type="JourneyInformationService.DataContent"/>
 			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
 		</xs:choice>
 	</xs:complexType>
-	<!--++ SpecificStop ++-->
+	<!--++ RetrieveSpecificStop ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationRequest" type="JourneyInformationService.RetrieveSpecificStopInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificStopInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="StopRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificStopInformationResponse" type="JourneyInformationService.RetrieveSpecificStopInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificStopInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificStopInformationData" type="JourneyInformationService.SpecificStopInformationData"/>
@@ -80,12 +125,14 @@
 			<xs:element name="JourneyStopInformation" type="JourneyStopInformationStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SpecificTSPPoint ++-->
+	<!--++ RetrieveSpecificTSPPoint ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTSPPointInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificTSPPointInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="TSPPointRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTSPPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTSPPointInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificTSPPointInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificTSPPointInformationData" type="JourneyInformationService.SpecificTSPPointInformationData"/>
@@ -98,12 +145,14 @@
 			<xs:element name="TSPPoint" type="TSPPointStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SpecificTimingPoint ++-->
+	<!--++ RetrieveSpecificTimingPoint ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationRequest" type="JourneyInformationService.RetrieveSpecificTimingPointInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificTimingPointInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="TimingPointRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificTimingPointInformationResponse" type="JourneyInformationService.RetrieveSpecificTimingPointInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificTimingPointInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificTimingPointInformationData" type="JourneyInformationService.SpecificTimingPointInformationData"/>
@@ -116,12 +165,14 @@
 			<xs:element name="TimingPoint" type="TimingPointStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SpecificGNSSPoint ++-->
+	<!--++ RetrieveSpecificGNSSPoint ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequest" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificGNSSPointInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="GNSSPointRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponse" type="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificGNSSPointInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificGNSSPointInformation" type="JourneyInformationService.SpecificGNSSPointInformationData"/>
@@ -134,12 +185,14 @@
 			<xs:element name="GNSSPoint" type="GNSSPointStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SpecificBeaconPoint ++-->
+	<!--++ RetrieveSpecificBeaconPoint ++-->
+	<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequest" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificBeaconPointInformationRequestStructure">
 		<xs:sequence>
 			<xs:element name="BeaconRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponse" type="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveSpecificBeaconPointInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="SpecificBeaconPointInformationData" type="JourneyInformationService.SpecificBeaconPointInformationData"/>
@@ -152,7 +205,8 @@
 			<xs:element name="BeaconPoint" type="BeaconPointStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllDisplayContents ++-->
+	<!--++ ListAllDisplayContents ++-->
+	<xs:element name="JourneyInformationService.ListAllDisplayContentsResponse" type="JourneyInformationService.ListAllDisplayContentsResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllDisplayContentsResponseStructure">
 		<xs:choice>
 			<xs:element name="AllDisplayContentsData" type="JourneyInformationService.AllDisplayContentsData"/>
@@ -165,7 +219,8 @@
 			<xs:element name="DisplayContent" type="DisplayContentStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllLineInformation ++-->
+	<!--++ ListAllLineInformation ++-->
+	<xs:element name="JourneyInformationService.ListAllLineInformationResponse" type="JourneyInformationService.ListAllLineInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllLineInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="AllLineInformationData" type="JourneyInformationService.AllLineInformationData"/>
@@ -178,7 +233,8 @@
 			<xs:element name="LineInformation" type="LineInformationStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllDestinationInformation ++-->
+	<!--++ ListAllDestinationInformation ++-->
+	<xs:element name="JourneyInformationService.ListAllDestinationInformationResponse" type="JourneyInformationService.ListAllDestinationInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllDestinationInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="AllDestinationInformationData" type="JourneyInformationService.AllDestinationInformationData"/>
@@ -191,7 +247,8 @@
 			<xs:element name="Destination" type="DestinationStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllViaPoint ++-->
+	<!--++ ListAllViaPoint ++-->
+	<xs:element name="JourneyInformationService.ListAllViaPointResponse" type="JourneyInformationService.ListAllViaPointResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllViaPointResponseStructure">
 		<xs:choice>
 			<xs:element name="AllViaPointData" type="JourneyInformationService.AllViaPointData"/>
@@ -204,7 +261,8 @@
 			<xs:element name="ViaPoint" type="ViaPointStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllAdditionalDisplayInformation ++-->
+	<!--++ ListAllAdditionalDisplayInformation ++-->
+	<xs:element name="JourneyInformationService.ListAllAdditionalDisplayInformationResponse" type="JourneyInformationService.ListAllAdditionalDisplayInformationResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllAdditionalDisplayInformationResponseStructure">
 		<xs:choice>
 			<xs:element name="AllAdditionalDisplayInformation" type="JourneyInformationService.AllAdditionalDisplayInformationData"/>
@@ -217,7 +275,8 @@
 			<xs:element name="AdditionalDisplayInformation" type="InternationalTextType" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllTrips ++-->
+	<!--++ ListAllRoutes ++-->
+	<xs:element name="JourneyInformationService.ListAllRoutesResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
 	<xs:complexType name="JourneyInformationService.ListAllRoutesResponseStructure">
 		<xs:choice>
 			<xs:element name="AllRouteData" type="JourneyInformationService.AllRoutesData"/>
@@ -230,50 +289,58 @@
 			<xs:element name="Route" type="TripInformationStructure" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AllTripsPerLine ++-->
+	<!--++ ListAllTripsPerLine ++-->
+	<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineRequest" type="JourneyInformationService.RetrieveAllRoutesPerLineRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.RetrieveAllRoutesPerLineRequestStructure">
 		<xs:sequence>
 			<xs:element name="LineRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--==== Definition of SetData-Operations ====-->
-	<!--++ BlockNumber ++-->
+	<xs:element name="JourneyInformationService.RetrieveAllRoutesPerLineResponse" type="JourneyInformationService.ListAllRoutesResponseStructure"/>
+	<!--++ SetBlockNumber ++-->
+	<xs:element name="JourneyInformationService.SetBlockNumberRequest" type="JourneyInformationService.SetBlockNumberRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetBlockNumberRequestStructure">
 		<xs:sequence>
 			<xs:element name="BlockRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ TripRef ++-->
+	<!--++ SetTripRef ++-->
+	<xs:element name="JourneyInformationService.SetTripRefRequest" type="JourneyInformationService.SetTripRefRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetTripRefRequestStructure">
 		<xs:sequence>
 			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ DisplayContent-->
+	<!--++ SetDisplayContent-->
+	<xs:element name="JourneyInformationService.SetDisplayContentRequest" type="JourneyInformationService.SetDisplayContentRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetDisplayContentRequestStructure">
 		<xs:sequence>
 			<xs:element name="DisplayContent" type="DisplayContentStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ CurrentTripIndex ++-->
+	<!--++ SetCurrentTripIndex ++-->
+	<xs:element name="JourneyInformationService.SetCurrentTripIndexRequest" type="JourneyInformationService.SetCurrentTripIndexRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetCurrentTripIndexRequestStructure">
 		<xs:sequence>
 			<xs:element name="CurrentTripIndex" type="IBIS-IP.int"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ CurrentStopIndex ++-->
+	<!--++ SetCurrentStopIndex ++-->
+	<xs:element name="JourneyInformationService.SetCurrentStopIndexRequest" type="JourneyInformationService.SetCurrentStopIndexRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetCurrentStopIndexRequestStructure">
 		<xs:sequence>
 			<xs:element name="CurrentStopIndex" type="IBIS-IP.int"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AdditionalAnnouncement ++-->
+	<!--++ SetAdditionalAnnouncement ++-->
+	<xs:element name="JourneyInformationService.SetAdditionalAnnouncementRequest" type="JourneyInformationService.SetAdditionalAnnouncementRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetAdditionalAnnouncementRequestStructure">
 		<xs:sequence>
 			<xs:element name="AdditionalAnnouncement" type="AdditionalAnnouncementStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ AdditionalTextmessage ++-->
+	<!--++ SetAdditionalTextmessage ++-->
+	<xs:element name="JourneyInformationService.SetAdditionalTextMessageRequest" type="JourneyInformationService.SetAdditionalTextMessageRequestStructure"/>
 	<xs:complexType name="JourneyInformationService.SetAdditionalTextMessageRequestStructure">
 		<xs:sequence>
 			<xs:element name="AdditionalTextMessage" type="IBIS-IP.string"/>

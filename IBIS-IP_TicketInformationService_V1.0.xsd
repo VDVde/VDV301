@@ -3,6 +3,90 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--==== TicketingService Operations ====-->
+	<xs:group name="TicketingServiceGroup">
+		<xs:sequence>
+			<xs:element name="TicketingService.SetRazziaRequest" type="TicketingService.SetRazziaRequestStructure"/>
+			<xs:element name="TicketingService.GetTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+			<xs:element name="TicketingService.RetrieveTariffInformationRequest" type="TicketingService.RetrieveTariffInformationRequestStructure"/>
+			<xs:element name="TicketingService.RetrieveTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+			<xs:element name="TicketingService.ValidateTicketRequest" type="TicketingService.ValidateTicketRequestStructure"/>
+			<xs:element name="TicketingService.ValidateTicketResponse" type="TicketingService.ValidateTicketResponseStructure"/>
+			<xs:element name="TicketingService.GetValidationResult" type="TicketingService.GetValidationResultResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ SetRazzia ++-->
+	<xs:element name="TicketingService.SetRazziaRequest" type="TicketingService.SetRazziaRequestStructure"/>
+	<xs:complexType name="TicketingService.SetRazziaRequestStructure">
+		<xs:sequence>
+			<xs:element name="TicketInformationRazziaStatus" type="TicketRazziaInformationEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ GetTariffInformation ++-->
+	<xs:element name="TicketingService.GetTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+	<xs:complexType name="TicketingService.GetTariffInformationResponseStructure">
+		<xs:choice>
+			<xs:element name="TicketingService.GetTariffInformationResponseData" type="TicketingService.GetTariffInformationResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketingService.GetTariffInformationResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="DefaultLanguage" type="IBIS-IP.language"/>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:group ref="TariffInformationGroup"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ RetrieveTariffInformation ++-->
+	<xs:element name="TicketingService.RetrieveTariffInformationRequest" type="TicketingService.RetrieveTariffInformationRequestStructure"/>
+	<xs:complexType name="TicketingService.RetrieveTariffInformationRequestStructure">
+		<xs:sequence>
+			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
+			<xs:element name="LineRef" type="IBIS-IP.NMTOKEN"/>
+			<xs:element name="StopRef" type="IBIS-IP.NMTOKEN"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TicketingService.RetrieveTariffInformationResponse" type="TicketingService.GetTariffInformationResponseStructure"/>
+	<!--++ ValidateTicket ++-->
+	<xs:element name="TicketingService.ValidateTicketRequest" type="TicketingService.ValidateTicketRequestStructure"/>
+	<xs:complexType name="TicketingService.ValidateTicketRequestStructure">
+		<xs:sequence>
+			<xs:element name="CardType" type="CardType"/>
+			<xs:element name="CardApplInformation" type="CardApplInformations" minOccurs="0"/>
+			<xs:group ref="CardTicketDataBlocks"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TicketingService.ValidateTicketResponse" type="TicketingService.ValidateTicketResponseStructure"/>
+	<xs:complexType name="TicketingService.ValidateTicketResponseStructure">
+		<xs:choice>
+			<xs:element name="TicketingService.ValidationResponseData" type="TicketingService.ValidateTicketResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketingService.ValidateTicketResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="GlobalCardStatus" type="GlobalCardStatus"/>
+			<xs:element name="CardType" type="CardType"/>
+			<xs:group ref="CardApplikationValidation" minOccurs="0"/>
+			<xs:group ref="CardDataValidation"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ GetValidationResult ++-->
+	<xs:element name="TicketingService.GetValidationResult" type="TicketingService.GetValidationResultResponseStructure"/>
+	<xs:complexType name="TicketingService.GetValidationResultResponseStructure">
+		<xs:choice>
+			<xs:element name="ValidationResultData" type="TicketingService.ValidationResultDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketingService.ValidationResultDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ValidationResult" type="TicketValidationEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
 	<!--==== Group Definitions ====-->
 	<xs:group name="CardApplikationValidation">
 		<xs:sequence>
@@ -43,78 +127,4 @@ for a short trip ticket</xs:documentation>
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<!--==== Service Definitions ====-->
-	<!--==== Structure Definitions ====-->
-	<xs:complexType name="TicketingService.RetrieveTariffInformationRequestStructure">
-		<xs:sequence>
-			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
-			<xs:element name="LineRef" type="IBIS-IP.NMTOKEN"/>
-			<xs:element name="StopRef" type="IBIS-IP.NMTOKEN"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.GetTariffInformationResponseStructure">
-		<xs:choice>
-			<xs:element name="TicketingService.GetTariffInformationResponseData" type="TicketingService.GetTariffInformationResponseDataStructure"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.GetTariffInformationResponseDataStructure">
-		<xs:sequence>
-			<xs:element name="DefaultLanguage" type="IBIS-IP.language"/>
-			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:group ref="TariffInformationGroup"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.SetRazziaRequestStructure">
-		<xs:sequence>
-			<xs:element name="TicketInformationRazziaStatus" type="TicketRazziaInformationEnumeration"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.SetRazziaResponseStructure">
-		<xs:choice>
-			<xs:element name="TicketingService.SetRazziaResponseData" type="TicketingService.SetRazziaResponseDataStructure"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.SetRazziaResponseDataStructure">
-		<xs:sequence>
-			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:element name="TicketInformationRazziaStatus" type="TicketRazziaInformationEnumeration"/>
-			<xs:element name="SetDataAccepted" type="IBIS-IP.boolean"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.ValidateTicketRequestStructure">
-		<xs:sequence>
-			<xs:element name="CardType" type="CardType"/>
-			<xs:element name="CardApplInformation" type="CardApplInformations" minOccurs="0"/>
-			<xs:group ref="CardTicketDataBlocks"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.ValidateTicketResponseStructure">
-		<xs:choice>
-			<xs:element name="TicketingService.ValidationResponseData" type="TicketingService.ValidateTicketResponseDataStructure"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.ValidateTicketResponseDataStructure">
-		<xs:sequence>
-			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:element name="GlobalCardStatus" type="GlobalCardStatus"/>
-			<xs:element name="CardType" type="CardType"/>
-			<xs:group ref="CardApplikationValidation" minOccurs="0"/>
-			<xs:group ref="CardDataValidation"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.GetValidationResultResponseStructure">
-		<xs:choice>
-			<xs:element name="ValidationResultData" type="TicketingService.ValidationResultDataStructure"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="TicketingService.ValidationResultDataStructure">
-		<xs:sequence>
-			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:element name="ValidationResult" type="TicketValidationEnumeration"/>
-		</xs:sequence>
-	</xs:complexType>
 </xs:schema>

@@ -5,14 +5,18 @@
 	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
 	<!--PassengerCountingService-->
-	<!--==== Group Definitions ====-->
-	<!--==== Service Definitions ====-->
-	<xs:complexType name="PassengerCountingService.AllDataStructure">
+	<!--==== PassengerCountingService Operations ====-->
+	<xs:group name="PassengerCountingServiceGroup">
 		<xs:sequence>
-			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
-			<xs:element name="CountingData" type="DoorInformationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
 		</xs:sequence>
-	</xs:complexType>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ GetAllData ++-->
+	<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
 	<xs:complexType name="PassengerCountingService.GetAllDataResponseStructure">
 		<xs:annotation>
 			<xs:documentation>Passenger counters and related data of queried doors</xs:documentation>
@@ -22,6 +26,14 @@
 			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
 		</xs:choice>
 	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.AllDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CountingData" type="DoorInformationStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ RetrieveSpecificDoorData ++-->
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
 	<xs:complexType name="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure">
 		<xs:annotation>
 			<xs:documentation>Query passenger counters of all doors or of doors identified by their references</xs:documentation>
@@ -34,6 +46,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
 	<xs:complexType name="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure">
 		<xs:annotation>
 			<xs:documentation>Passenger counters and related data of queried doors</xs:documentation>
@@ -49,6 +62,8 @@
 			<xs:element name="CountingData" type="DoorInformationStructure"/>
 		</xs:sequence>
 	</xs:complexType>
+	<!--++ SetCounterData ++-->
+	<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
 	<xs:complexType name="PassengerCountingService.SetCounterDataRequestStructure">
 		<xs:annotation>
 			<xs:documentation>Set passenger counters of given doors</xs:documentation>
@@ -61,5 +76,4 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<!--==== Structure Definitions ====-->
 </xs:schema>

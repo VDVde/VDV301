@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- DResearch VideoServices v2.0 naming according to VDV 301 v2.0, Dipl.-Ing (FH) Peter Schüßler, MBA (DResearch Fahrzeugelektronik GmbH), 2018-01-12 -->
+<!-- Include this XSD Scheme to use the IBIS-IP VideoLiveService (request of information of all available video sources in the IBIS-IP system) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.0.xsd"/>
+		<xs:simpleType name="VideoCodecEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MJPEG"/>
+			<xs:enumeration value="MPEG4"/>
+			<xs:enumeration value="H264"/>
+			<xs:enumeration value="H265"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+		<xs:simpleType name="VideoSourceCurrentStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Connected"/>
+			<xs:enumeration value="NoSync"/>
+			<xs:enumeration value="NoETHConnection"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!--==== VideoLiveService - Operations ====-->
+	<xs:group name="VideoLiveServiceGroup">
+		<xs:sequence>
+			<xs:element name="VideoLiveService.ListAllLiveStreamsResponse" type="VideoLiveService.ListAllLiveStreamsResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ ListAllLiveStreams ++-->
+	<xs:element name="VideoLiveService.ListAllLiveStreamsResponse" type="VideoLiveService.ListAllLiveStreamsResponseStructure"/>
+	<xs:complexType name="VideoLiveService.ListAllLiveStreamsResponseStructure">
+		<xs:choice>
+			<xs:element name="ListAllLiveStreamsData" type="VideoLiveService.LiveStreamData" maxOccurs="unbounded"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="VideoLiveService.LiveStreamData">
+		<xs:choice>
+			<xs:element name="StreamID" type="IBIS-IP.int"/>
+			<xs:element name="CameraName" type="IBIS-IP.string"/>
+			<xs:element name="CameraType" type="IBIS-IP.string"/>
+			<xs:element name="CameraCurrentState" type="VideoSourceCurrentStateEnumeration"/>
+			<xs:element name="rtspURI" type="IBIS-IP.anyURI"/>
+			<xs:element name="VideoWidth" type="IBIS-IP.int"/>
+			<xs:element name="VideoHeight" type="IBIS-IP.int"/>
+			<xs:element name="VideoCodec" type="VideoCodecEnumeration"/>
+			<xs:element name="FramesPerSecond" type="IBIS-IP.int"/>
+			<xs:element name="Bitrate" type="IBIS-IP.int"/>
+			<xs:element name="Mirrored" type="IBIS-IP.boolean"/>
+			<xs:element name="Flipped" type="IBIS-IP.boolean"/>
+			<xs:element name="Rotation" type="IBIS-IP.int"/>
+			<xs:element name="Quality" type="IBIS-IP.int"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

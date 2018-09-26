@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.0.xsd"/>
 	<!--==== DataDefinitions ====-->
 	<xs:complexType name="AdditionalAnnouncementStructure">
 		<xs:annotation>
@@ -164,7 +164,7 @@
 					<xs:documentation>Describes the kind of connection </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="DisplayContent" type="DisplayContentStructure">
+			<xs:element name="DisplayContent" type="DisplayContentStructure" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Structure for desccribing the information which is shown on a head- or sidesign</xs:documentation>
 				</xs:annotation>
@@ -186,7 +186,12 @@
 			</xs:element>
 			<xs:element name="ExpectedDepartureTime" type="IBIS-IP.dateTime" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Information, at which time the leaving vehicle will depart</xs:documentation>
+					<xs:documentation>Information, at which time the leaving vehicle will depart based on realtime information</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ScheduledDepartureTime" type="IBIS-IP.dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Information, at which time the leaving vehicle is planned to depart</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -206,6 +211,11 @@
 					<xs:documentation>Versionreference of the data</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataVersionListStructure">
+		<xs:sequence>
+			<xs:element name="DataVersion" type="DataVersionStructure" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DestinationStructure">
@@ -233,12 +243,8 @@
 	<xs:complexType name="DeviceInformationStructure">
 		<xs:sequence>
 			<xs:group ref="DeviceInformationGroup"/>
-			<xs:element name="DataVersionList" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="DataVersion" type="DataVersionStructure" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
+			<xs:element name="DataVersionList" type="DataVersionListStructure" minOccurs="0">
+
 			</xs:element>
 			<xs:element name="WebInterfaceAddress" type="IBIS-IP.anyURI" minOccurs="0"/>
 		</xs:sequence>
@@ -628,10 +634,15 @@ farezone</xs:documentation>
             		</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="AdditionalTextMessage" type="IBIS-IP.string" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage" type="InternationalTextType" minOccurs="0"/>
 			<xs:element name="AdditionalAnnouncement" type="AdditionalAnnouncementStructure" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>not StopPointAnnouncements; additional announcements; e.g. of the operator or dispatcher</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RouteDirection" type="RouteDirectionEnumeration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The direction of the route, 1->forward 2->backwards and  0->UNDEFINED </xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>

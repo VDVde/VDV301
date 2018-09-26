@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--==== Service Definitions ====-->
+	<xs:element name="DistanceLocationService.Data" type="DistanceLocationService.DataStructure"/>
+	<!--==== Structure Definitions ====-->
+	<xs:complexType name="DistanceLocationService.DataStructure">
+		<xs:sequence>
+			<xs:element name="Distance" type="IBIS-IP.double">
+				<xs:annotation>
+					<xs:documentation>travelled distance [m]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Odometer-Pulses" type="IBIS-IP.int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -4,7 +4,16 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
-	<!--====  SystemManagementService 2.1 2013-06-26  ====-->
+	<!--==== SystemManagementService Operations====-->
+	<xs:group name="SystemManagementServiceGroup">
+		<xs:sequence>
+			<xs:element name="SystemManagementService.GetDeviceStatusResponse" type="SystemManagementService.GetDeviceStatusResponseStructure"/>
+			<xs:element name="SystemManagementService.GetServiceStatusResponse" type="SystemManagementService.GetServiceStatusResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ GetDeviceStatus ++-->
+	<xs:element name="SystemManagementService.GetDeviceStatusResponse" type="SystemManagementService.GetDeviceStatusResponseStructure"/>
 	<xs:complexType name="SystemManagementService.GetDeviceStatusResponseStructure">
 		<xs:choice>
 			<xs:element name="SystemManagementService.GetDeviceStatusResponseData" type="SystemManagementService.GetDeviceStatusResponseDataStructure"/>
@@ -17,6 +26,8 @@
 			<xs:element name="DeviceSpecificationWithStateList" type="DeviceSpecificationWithStateListStructure"/>
 		</xs:sequence>
 	</xs:complexType>
+	<!--++ GetServiceStatus ++-->
+	<xs:element name="SystemManagementService.GetServiceStatusResponse" type="SystemManagementService.GetServiceStatusResponseStructure"/>
 	<xs:complexType name="SystemManagementService.GetServiceStatusResponseStructure">
 		<xs:choice>
 			<xs:element name="SystemManagementService.GetServiceStatusResponseData" type="SystemManagementService.GetServiceStatusResponseDataStructure"/>
