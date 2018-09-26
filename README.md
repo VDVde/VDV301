@@ -8,15 +8,15 @@ entstandenen XML-Dateien durch interessierte Unternehmen.
 ### Workflow
 
 Aktuell gibt es nur den master-Branch. In diesem wird nicht direkt gearbeitet
-(auch nicht von den berechtigten Contributors).
+(auch nicht von den berechtigten Maintainern).
 
-Stattdessen können sich alle Interessierten (auch die Contributors) das
+Stattdessen können sich alle Interessierten (auch die Maintainer) das
 Projekt forken und im Fork in einem Branch ihrer Wahl Änderungen vorbereiten.
 
 Sind die Änderungen in einem veröffentlichungswürdigen Zustand, wird ein Pull
 Request gestellt. Dieser wird dann im zugehörigen Webforum
 https://forum.vdv.de diskutiert. Wird beschlossen, den Pull Request zu
-akzeptieren, nimmt einer der Contributors den Merge vor.
+akzeptieren, nimmt einer der Maintainer den Merge vor.
 
 Jeder offiziell durch den VDV (im Rahmen des dort zuständigen Arbeitskreises)
 freigegebene Stand bekommt dann ein entsprechendes Tag (z.B. `VDV-301-1.0`). 
