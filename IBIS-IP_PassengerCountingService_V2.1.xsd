@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!-- Mit XMLSpy v2018 rel. 2  (http://www.altova.com) von Vera Albrecht (iris-GmbH) bearbeitet, IBIS-IP 2.1 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--PassengerCountingService-->
+	<!--==== PassengerCountingService Operations ====-->
+	<xs:group name="PassengerCountingServiceGroup">
+		<xs:sequence>
+			<xs:element name="PassengerCountingService.GetAllDataRequest"/>
+			<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.SubscribeAllDataRequest" type="SubscribeRequestStructure"/>
+			<xs:element name="PassengerCountingService.SubscribeAllDataResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="PassengerCountingService.UnsubscribeAllDataRequest" type="UnsubscribeRequestStructure"/>
+			<xs:element name="PassengerCountingService.UnsubscribeAllDataResponse" type="UnsubscribeResponseStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
+			<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
+			<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
+			<xs:element name="PassengerCountingService.SetCounterDataResponse" type="DataAcceptedResponseStructure"/>
+			<xs:element name="PassengerCountingService.StartCountingRequest" type="PassengerCountingService.StartCountingRequestStructure"/>
+			<xs:element name="PassengerCountingService.StartCountingResponse" type="DataAcceptedResponseStructure"/>
+			<xs:element name="PassengerCountingService.StopCountingRequest" type="PassengerCountingService.StopCountingRequestStructure"/>
+			<xs:element name="PassengerCountingService.StopCountingResponse" type="DataAcceptedResponseStructure"/>
+			<xs:element name="PassengerCountingService.GetCountingStateRequest"/>
+			<xs:element name="PassengerCountingService.GetCountingStateResponse" type="PassengerCountingService.GetCountingStateResponseStructure"/>
+			<xs:element name="PassengerCountingService.SubscribeCountingStateRequest" type="SubscribeRequestStructure"/>
+			<xs:element name="PassengerCountingService.SubscribeCountingStateResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="PassengerCountingService.UnsubscribeCountingStateRequest" type="UnsubscribeRequestStructure"/>
+			<xs:element name="PassengerCountingService.UnsubscribeCountingStateResponse" type="UnsubscribeResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ GetAllData ++-->
+	<xs:element name="PassengerCountingService.GetAllDataResponse" type="PassengerCountingService.GetAllDataResponseStructure"/>
+	<xs:complexType name="PassengerCountingService.GetAllDataResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Passenger counters and related data of queried doors</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="AllData" type="PassengerCountingService.AllDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.AllDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CountingData" type="DoorInformationStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ RetrieveSpecificDoorData ++-->
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataRequest" type="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure"/>
+	<xs:complexType name="PassengerCountingService.RetrieveSpecificDoorDataRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Query passenger counters of all doors or of doors identified by their references</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DoorID" type="IBIS-IP.NMTOKEN">
+				<xs:annotation>
+					<xs:documentation>List of doors. All doors, if the list is empty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PassengerCountingService.RetrieveSpecificDoorDataResponse" type="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure"/>
+	<xs:complexType name="PassengerCountingService.RetrieveSpecificDoorDataResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Passenger counters and related data of queried doors</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="SpecificDoorData" type="PassengerCountingService.SpecificDoorDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.SpecificDoorDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CountingData" type="DoorInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ SetCounterData ++-->
+	<xs:element name="PassengerCountingService.SetCounterDataRequest" type="PassengerCountingService.SetCounterDataRequestStructure"/>
+	<xs:complexType name="PassengerCountingService.SetCounterDataRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Set passenger counters of given doors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DoorSetList" type="DoorCountingListStructure" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Desired passenger counters for a selection of doors</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ StartCounting ++-->
+	<xs:complexType name="DoorIdType">
+		<xs:complexContent>
+			<xs:extension base="IBIS-IP.NMTOKEN"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DoorIdListType">
+		<xs:sequence>
+			<xs:element name="DoorID" type="DoorIdType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of doors</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.StartCountingRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Request structure for starting counting process at the PassengerCountingService</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DoorIdList" type="DoorIdListType">
+				<xs:annotation>
+					<xs:documentation>List of doors where the counting process is to be started</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ StopCounting ++-->
+	<xs:complexType name="PassengerCountingService.StopCountingRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Request structure for stopping counting process at the PassengerCountingService</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DoorIdList" type="DoorIdListType">
+				<xs:annotation>
+					<xs:documentation>List of doors where the counting process is to be stopped</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ GetCountingState ++-->
+	<xs:simpleType name="CountingStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>state of the counting proces of a specific door</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="StartRequested"/>
+			<xs:enumeration value="Started"/>
+			<xs:enumeration value="StopRequested"/>
+			<xs:enumeration value="Stopped"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CountingStateStructure">
+		<xs:annotation>
+			<xs:documentation>Structure for CountingState of a specific door</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DoorID" type="DoorIdType"/>
+			<xs:element name="CountingState" type="CountingStateEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.CountingStatesStructure">
+		<xs:annotation>
+			<xs:documentation>Structure for CountingState of all doors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CountingStates" type="CountingStateStructure" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengerCountingService.GetCountingStateResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Response structure of the PassengerCountingService operation GetCountingState</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Data" type="PassengerCountingService.CountingStatesStructure"/>
+			<xs:element name="ErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

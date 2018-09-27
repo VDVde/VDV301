@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mit XMLSpy v2018 sp1 (x64) (http://www.altova.com) von Torsten Franke (IVU Traffic Technologies AG) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_CustomerInformationService_V2.0.xsd"/>
+	<!--==== TrainSetDataService Operations ====-->
+	<xs:group name="TrainSetDataServiceOperations">
+		<xs:sequence>
+			<!--=====================================================================-->
+			<!--=== Operations related to functionalities of a TrainSet operation ===-->
+			<!--=====================================================================-->
+			<!-- In an X-Y-traffic the master coach has the information of both, the trip the master coach has to perform and the trips the other -->
+			<!-- coaches of the train set have to perfrom. Therefore the master coach can provide the trip references to the slave coaches depending on -->
+			<!-- their position within the train set. The slave coach makes then use of the trip reference, selects the respective trip and does the -->
+			<!-- passenger information autonomously. Please note: Position information are still provided by the master coach until the the train set is -->
+			<!-- this operation is used by the slave coach to request the trip reference of the slave coach -->
+			<xs:element name="TrainSetDataService.RetrieveTripRefRequest" type="TrainSetDataService.RetrieveTripRefRequestStructure"/>
+			<xs:element name="TrainSetDataService.RetrieveTripRefResponse" type="TrainSetDataService.RetrieveTripRefResponseStructure"/>
+			<!-- In an X-Y-traffic the master coach has the information of both, the trip the master coach has to perform and the trips the other -->
+			<!-- coaches of the train set have to perfrom. Therefore the master coach can provide the complete trip information structure to the slave coaches depending on -->
+			<!-- their position within the train set. Thereby dispatching actions received by the master coach from the central AVL can be directly transmitted to the slave coaches. -->
+			<!-- Please note: the slave vehicles use those trip information always like dispatched trips, independent from their onw data supply -->
+			<!-- Please note: positioning and passenger information is done by each onboard unit separately based on the TripInformation and the NetworkLocationService -->
+			<!-- Please note: the same structures can be used also for subscription mechanisms to the TripInformation -->
+			<xs:element name="TrainSetDataService.RetrieveTripInformationRequest" type="TrainSetDataService.RetrieveTripInformationRequestStructure"/>
+			<xs:element name="TrainSetDataService.RetrieveTripInformationResponse" type="TrainSetDataService.RetrieveTripInformationResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=====================================================================-->
+	<!--=== Operations related to functionalities of a TrainSet operation ===-->
+	<!--=====================================================================-->
+	<!--=== RetrieveTripRefRequest ===-->
+	<xs:element name="TrainSetDataService.RetrieveTripRefRequest" type="TrainSetDataService.RetrieveTripRefRequestStructure"/>
+	<xs:complexType name="TrainSetDataService.RetrieveTripRefRequestStructure">
+		<xs:sequence>
+			<!-- counting of coaches in a trainset always starts at 1. The master is always coach 1. The coach connected to the master is coach 2 and so forth -->
+			<!-- a master in the middle between two coaches is not covered by the concept -->
+			<xs:element name="CoachNumber" type="IBIS-IP.string">
+				<xs:annotation>
+					<xs:documentation>
+						This is the coach number as printed on the vehicle.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== RetrieveTripRefResponse ===-->
+	<xs:element name="TrainSetDataService.RetrieveTripRefResponse" type="TrainSetDataService.RetrieveTripRefResponseStructure"/>
+	<xs:complexType name="TrainSetDataService.RetrieveTripRefResponseStructure">
+		<xs:sequence>
+			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== RetrieveTripInformationRequest ===-->
+	<xs:element name="TrainSetDataService.RetrieveTripInformationRequest" type="TrainSetDataService.RetrieveTripInformationRequestStructure"/>
+	<xs:complexType name="TrainSetDataService.RetrieveTripInformationRequestStructure">
+		<xs:sequence>
+			<xs:element name="CoachNumber" type="IBIS-IP.string">
+				<xs:annotation>
+					<xs:documentation>
+						This is the coach number as printed on the vehicle.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== RetrieveTripInformationResponse ===-->
+	<xs:element name="TrainSetDataService.RetrieveTripInformationResponse" type="TrainSetDataService.RetrieveTripInformationResponseStructure"/>
+	<xs:complexType name="TrainSetDataService.RetrieveTripInformationResponseStructure">
+		<xs:sequence>
+			<xs:element name="TripInformation" type="TripInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

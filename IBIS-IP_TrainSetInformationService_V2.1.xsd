@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mit XMLSpy v2018 sp1 (x64) (http://www.altova.com) von Torsten Franke (IVU Traffic Technologies AG) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.0.xsd"/>
+<!--	<xs:include schemaLocation="	"/> -->
+	<xs:simpleType name="CoachStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Master"/>
+			<xs:enumeration value="Slave"/>
+			<xs:enumeration value="Neutral"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CoupledSideEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="A+B"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--==== TrainSetInformationService Operations ====-->
+	<xs:group name="TrainSetInformationServiceOperations">
+		<xs:sequence>
+			<!--=====================================================================-->
+			<!--=== Operations related to the setup of a TrainCompoterInformation ===-->
+			<!--=====================================================================-->
+			<!-- this operation is used by the OBU of the master coach to get information on the trainset participants -->
+			<xs:element name="TrainSetInformationService.GetTrainSetCompositionResponse" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--====================================================================================-->
+	<!--=== Defition of data structures to request the composition of a TrainSet         ===-->
+	<!--====================================================================================-->
+	<!--=== GetTrainSetComposition ===-->
+	<xs:element name="TrainSetInformationService.GetTrainSetCompositionResponse" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
+	<xs:complexType name="TrainSetInformationService.GetTrainSetCompositionResponseStructure">
+		<xs:sequence>
+			<xs:element name="CoachType" type="IBIS-IP.string" minOccurs="0"/>
+			<xs:element name="CoachNumber" type="IBIS-IP.string"/>
+			<xs:element name="FrontCabin" type="IBIS-IP.string">
+				<xs:annotation>
+					<xs:documentation>
+						Usually cabins are either named "A" and "B" or "1" and "2" or "none".
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RearCabin" type="IBIS-IP.string"/>
+			<xs:element name="CoachPositionInTrainSet" type="IBIS-IP.int">
+				<xs:annotation>
+					<xs:documentation>
+						Counting of coaches in a trainset always starts at 1. The master is always coach 1. The coach connected to the master is coach 2 and so forth.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CoupledSide" type="CoupledSideEnumeration" minOccurs="0"/>
+			<xs:element name="CoachState" type="CoachStateEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
