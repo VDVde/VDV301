@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!-- Mit XMLSpy v2018 rel. 2  (http://www.altova.com) von Vera Albrecht (iris-GmbH) bearbeitet, IBIS-IP 2.1 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<!--DoorStateService-->
+	<!--==== Group Definitions ====-->
+	<!--==== DoorStateService Operations ====-->
+	<xs:group name="DoorStateServiceGroup">
+		<xs:sequence>
+			<xs:element name="DoorStateService.GetDoorOpenStatesRequest"/>
+			<xs:element name="DoorStateService.GetDoorOpenStatesResponse" type="DoorStateService.GetDoorOpenStatesResponseStructure"/>
+			<xs:element name="DoorStateService.SubscribeDoorOpenStatesRequest" type="SubscribeRequestStructure"/>
+			<xs:element name="DoorStateService.SubscribeDoorOpenStatesResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="DoorStateService.UnsubscribeDoorOpenStatesRequest" type="UnsubscribeRequestStructure"/>
+			<xs:element name="DoorStateService.UnsubscribeDoorOpenStatesResponse" type="UnsubscribeResponseStructure"/>
+			<xs:element name="DoorStateService.GetDoorOperationStatesRequest"/>
+			<xs:element name="DoorStateService.GetDoorOperationStatesResponse" type="DoorStateService.GetDoorOperationStatesResponseStructure"/>
+			<xs:element name="DoorStateService.SubscribeDoorOperationStatesRequest" type="SubscribeRequestStructure"/>
+			<xs:element name="DoorStateService.SubscribeDoorOperationStatesResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="DoorStateService.UnsubscribeDoorOperationStatesRequest" type="UnsubscribeRequestStructure"/>
+			<xs:element name="DoorStateService.UnsubscribeDoorOperationStatesResponse" type="UnsubscribeResponseStructure"/>
+			<xs:element name="DoorStateService.RetrieveSpecificDoorOpenStateRequest" type="DoorStateService.RetrieveSpecificDoorOpenStateRequestStructure"/>
+			<xs:element name="DoorStateService.RetrieveSpecificDoorOpenStateResponse" type="DoorStateService.RetrieveSpecificDoorOpenStateResponseStructure"/>
+			<xs:element name="DoorStateService.RetrieveSpecificDoorOperationStateRequest" type="DoorStateService.RetrieveSpecificDoorOperationStateRequestStructure"/>
+			<xs:element name="DoorStateService.RetrieveSpecificDoorOperationStateResponse" type="DoorStateService.RetrieveSpecificDoorOperationStateResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--==== Service Definitions ====-->
+	<!--++ GetDoorOpenStates ++-->
+	<xs:complexType name="DoorStateService.GetDoorOpenStatesResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Response structure for operation DoorStateService.GetDoorOpenStates. Contains information about open state of all the door(s) observed by the service. Or an error message.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="GetDoorOpenStatesResponseData" type="DoorStateService.GetDoorOpenStatesResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage"         type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ GetDoorOperationStates ++-->
+	<xs:complexType name="DoorStateService.GetDoorOperationStatesResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Response structure for operation DoorStateService.GetDoorOpeationStates. Contains information about operation state of all the door(s) observed by the service. Or an error message.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="GetDoorOperationStatesResponseData" type="DoorStateService.GetDoorOperationStatesResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage"              type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ RetrieveSpecificDoorOpenState ++-->
+	<xs:complexType name="DoorStateService.RetrieveSpecificDoorOpenStateRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Request structure for operation DoorStateService.RetrieveSpecificDoorOpenState. Specifies the door under interest by door identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="DoorID" type="IBIS-IP.NMTOKEN"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DoorStateService.RetrieveSpecificDoorOpenStateResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Answer structure for operation DoorStateService.RetrieveSpecificDoorOpenState. Contains information about open state of the queried door. Or an error message.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="DoorOpenState" type="DoorStateService.SpecificDoorOpenStateStructure"/>
+			<xs:element name="ErrorMessage"  type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--++ RetrieveSpecificDoorOperationState ++-->
+	<xs:complexType name="DoorStateService.RetrieveSpecificDoorOperationStateRequestStructure">
+		<xs:annotation>
+			<xs:documentation>Request structure for operation DoorStateService.RetrieveSpecificDoorOperationnState. Specifies the door under interest by door identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="DoorID" type="IBIS-IP.NMTOKEN"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DoorStateService.RetrieveSpecificDoorOperationStateResponseStructure">
+		<xs:annotation>
+			<xs:documentation>Answer structure for operation DoorStateService.RetrieveSpecificDoorOperationnState. Contains information about operationn state of the queried door. Or an error message.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="DoorOperationState" type="DoorStateService.SpecificDoorOperationStateStructure"/>
+			<xs:element name="ErrorMessage"       type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--==== Structure Definitions ====-->
+	<xs:complexType name="DoorStateService.GetDoorOpenStatesResponseDataStructure">
+		<xs:annotation>
+			<xs:documentation>List for describing the of door open states of several doors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeStamp"      type="IBIS-IP.dateTime"><xs:annotation><xs:documentation>Time stamp of structure creation</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="DoorOpenStates" type="DoorStateService.SpecificDoorOpenStateStructure" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DoorStateService.GetDoorOperationStatesResponseDataStructure">
+		<xs:annotation>
+			<xs:documentation>List for describing the of door operation states of several doors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeStamp"           type="IBIS-IP.dateTime"><xs:annotation><xs:documentation>Time stamp of structure creation</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="DoorOperationStates" type="DoorStateService.SpecificDoorOperationStateStructure" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DoorStateService.SpecificDoorOpenStateStructure">
+		<xs:annotation>
+			<xs:documentation>door open state of a specific door</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"><xs:annotation><xs:documentation>Time stamp of door open state</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="DoorID"         type="IBIS-IP.NMTOKEN"><xs:annotation><xs:documentation>unique door identifier</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="OpenState" type="DoorOpenStateStructure"><xs:annotation><xs:documentation>door open state</xs:documentation></xs:annotation></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DoorStateService.SpecificDoorOperationStateStructure">
+		<xs:annotation>
+			<xs:documentation>door operation state of a specific door</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TimeStamp"      type="IBIS-IP.dateTime"><xs:annotation><xs:documentation>Time stamp of door operation state</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="DoorID"         type="IBIS-IP.NMTOKEN"><xs:annotation><xs:documentation>unique door identifier</xs:documentation></xs:annotation></xs:element>
+			<xs:element name="OperationState" type="DoorOperationStateStructure"><xs:annotation><xs:documentation>door operation state</xs:documentation></xs:annotation></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
