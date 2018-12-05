@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
+	
+	<!--====  TicketValidationService ====-->
+	<xs:element name="TicketValidationService.GetCurrentStopPointResponse"  type="TicketValidationService.GetCurrentStopPointResponseStructure"/>
+	<xs:element name="TicketValidationService.GetRazziaResponse"            type="TicketValidationService.GetRazziaResponseStructure"/>
+	<xs:element name="TicketValidationService.GetCurrentLineResponse"       type="TicketValidationService.GetCurrentLineResponseStructure"/>
+	<xs:element name="TicketValidationService.GetVehicleDataResponse"       type="TicketValidationService.GetVehicleDataResponseStructure"/>
+	<xs:element name="TicketValidationService.RetrieveTripDataRequest"      type="TicketValidationService.RetrieveTripDataRequestStructure"/>
+	<xs:element name="TicketValidationService.RetrieveTripDataResponse"     type="TicketValidationService.RetrieveTripDataResponseStructure"/>
+
+	<xs:group name="TicketValidationServiceOperations">
+		<xs:sequence>
+			<xs:element name="TicketValidationService.GetCurrentStopPointResponse"  type="TicketValidationService.GetCurrentStopPointResponseStructure"/>
+			<xs:element name="TicketValidationService.GetRazziaResponse"            type="TicketValidationService.GetRazziaResponseStructure"/>
+			<xs:element name="TicketValidationService.GetCurrentLineResponse"       type="TicketValidationService.GetCurrentLineResponseStructure"/>
+			<xs:element name="TicketValidationService.GetVehicleDataResponse"       type="TicketValidationService.GetVehicleDataResponseStructure"/>
+			<xs:element name="TicketValidationService.RetrieveTripDataRequest"      type="TicketValidationService.RetrieveTripDataRequestStructure"/>
+			<xs:element name="TicketValidationService.RetrieveTripDataResponse"     type="TicketValidationService.RetrieveTripDataResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<!--++ CurrentStopPoint ++-->
+	<xs:complexType name="TicketValidationService.GetCurrentStopPointResponseStructure">
+		<xs:choice>
+			<xs:element name="CurrentStopPointData"  type="TicketValidationService.CurrentStopPointDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.CurrentStopPointDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp"        type="IBIS-IP.dateTime"/>
+			<xs:element name="CurrentStopPoint" type="StopInformationStructure"/>
+			<xs:element name="CurrentTripRef"   type="IBIS-IP.NMTOKEN" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ Razzia ++-->
+	<xs:complexType name="TicketValidationService.GetRazziaResponseStructure">
+		<xs:choice>
+			<xs:element name="RazziaData" type="TicketValidationService.RazziaResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name="TicketValidationService.RazziaResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="RazziaState" type="TicketRazziaInformationEnumeration"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ CurrentLine ++-->
+	<xs:complexType name="TicketValidationService.GetCurrentLineResponseStructure">
+		<xs:choice>
+			<xs:element name="CurrentLineData" type="TicketValidationService.CurrentLineDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.CurrentLineDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="CurrentLine" type="LineInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ VehicleData ++-->
+	<xs:complexType name="TicketValidationService.GetVehicleDataResponseStructure">
+		<xs:choice>
+			<xs:element name="VehicleData" type="TicketValidationService.VehicleDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.VehicleDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="VehicleRef" type="IBIS-IP.NMTOKEN"/>
+			<xs:element name="RouteDeviation" type="RouteDeviationEnumeration" minOccurs="0"/>
+			<xs:element name="DoorOpenState" type="DoorOpenStateEnumeration" minOccurs="0"/>
+			<xs:element name="MovingDirectionForward" type="IBIS-IP.boolean" minOccurs="0"/>
+			<xs:element name="VehicleMode" type="VehicleModeEnumeration" minOccurs="0"/>
+			<xs:element name="DriverNumber" type="IBIS-IP.string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!--++ RetrieveTripData ++-->
+	<xs:complexType name="TicketValidationService.RetrieveTripDataRequestStructure">
+		<xs:sequence>
+			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TicketValidationService.RetrieveTripDataResponseStructure">
+		<xs:choice>
+			<xs:element name="TripData" type="TicketValidationService.TripDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name="TicketValidationService.TripDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="TripInformation" type="TripInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

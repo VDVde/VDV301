@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2018 sp1 (x64) (http://www.altova.com) von Torsten Franke (IVU Traffic Technologies AG) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_TrainSetInformationService_V2.2.xsd"/>
+	<!--==== TrainSetManagementService Operations ====-->
+	<xs:group name="TrainSetManagementServiceOperations">
+		<xs:sequence>
+			<!--=====================================================-->
+			<!--=== Operations related to the setup of a TrainSet ===-->
+			<!--=====================================================-->
+			<!-- this operation is used by the master coach to address other coaches and set them into slave mode -->
+			<xs:element name="TrainSetManagementService.SetSlaveModeRequest" type="TrainSetManagementService.SetSlaveModeRequestStructure"/>
+			<xs:element name="TrainSetManagementService.SetSlaveModeResponse" type="DataAcceptedResponseStructure"/>
+			<!-- this operation is used by the fromer master coach, if a master coach was set from master to neutral mode, to address other coachs and set them into neutral mode -->
+			<xs:element name="TrainSetManagementService.SetNeutralModeRequest" type="TrainSetManagementService.SetNeutralModeRequestStructure"/>
+			<xs:element name="TrainSetManagementService.SetNeutralModeResponse" type="DataAcceptedResponseStructure"/>
+			<xs:element name="TrainSetManagementService.GetTrainSetComposition" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--====================================================================================-->
+	<!--=== Defition of operations and data structures related to the setup of a TrainSet===-->
+	<!--====================================================================================-->
+	<!--=== SetSlaveMode Request ===-->
+	<xs:element name="TrainSetManagementService.SetSlaveModeRequest" type="TrainSetManagementService.SetSlaveModeRequestStructure"/>
+	<xs:complexType name="TrainSetManagementService.SetSlaveModeRequestStructure">
+		<xs:sequence>
+			<xs:element name="CoachNumberOfMaster" type="IBIS-IP.string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== SetSlaveMode Response ===-->
+	<xs:element name="TrainSetManagementService.SetSlaveModeResponse" type="DataAcceptedResponseStructure"/>
+	<!--=== SetNeutralMode ===-->
+	<xs:element name="TrainSetManagementService.SetNeutralModeRequest" type="TrainSetManagementService.SetNeutralModeRequestStructure"/>
+	<xs:complexType name="TrainSetManagementService.SetNeutralModeRequestStructure">
+		<xs:sequence>
+			<!-- there is basically no need for a structure, since "SetNeutralMode" does not need any parameters". Can I simply leave it empty? -->
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== SetNeutralMode Response ===-->
+	<xs:element name="TrainSetManagementService.SetNeutralModeResponse" type="DataAcceptedResponseStructure"/>
+	<!--=== GetTrainSetComposition ===-->
+	<xs:element name="TrainSetManagementService.GetTrainSetComposition" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
+</xs:schema>
