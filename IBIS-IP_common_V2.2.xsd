@@ -873,10 +873,15 @@
 	</xs:complexType>
 	<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
 	<xs:complexType name="SubscribeResponseStructure">
-		<xs:choice>
-			<xs:element name="Active" type="IBIS-IP.boolean"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element name="Active" type="IBIS-IP.boolean" minOccurs="0"/>
+			<xs:element name="Heartbeat" type="IBIS-IP.duration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If the service returns a heartbeat value and it is not 0, the subscriber can expect that the service will send data at least every heartbeat seconds.	This heartbeat can be used to monitor the connection quality by the client. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"  minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
 	<xs:complexType name="UnsubscribeRequestStructure">
@@ -888,10 +893,10 @@
 	</xs:complexType>
 	<xs:element name="UnsubscribeResponse" type="UnsubscribeResponseStructure"/>
 	<xs:complexType name="UnsubscribeResponseStructure">
-		<xs:choice>
+		<xs:sequence>
 			<xs:element name="Active" type="IBIS-IP.boolean"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
-		</xs:choice>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"  minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DataAcceptedResponse" type="DataAcceptedResponseStructure"/>
 	<xs:complexType name="DataAcceptedResponseStructure">
