@@ -873,6 +873,9 @@
 	</xs:complexType>
 	<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
 	<xs:complexType name="SubscribeResponseStructure">
+		<xs:annotation>
+				<xs:documentation>For compatibility reasons, this structure is now a sequence of members, all of which are optional - of course, at least one member should be included in meaningful data.</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Active" type="IBIS-IP.boolean" minOccurs="0"/>
 			<xs:element name="Heartbeat" type="IBIS-IP.duration" minOccurs="0">
