@@ -573,6 +573,9 @@
 			<xs:element name="StopAlternativeName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="Platform" type="IBIS-IP.string" minOccurs="0"/>
 			<xs:element name="DisplayContent" type="DisplayContentStructure" maxOccurs="unbounded"/>
+			<xs:annotation>
+				<xs:documentation>This display content is stop specific - if not provided default content from higher level will be used</xs:documentation>
+			</xs:annotation>
 			<xs:element name="StopAnnouncement" type="AnnouncementStructure" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="ArrivalScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>
 			<xs:element name="DepartureScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>

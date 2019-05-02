@@ -32,13 +32,24 @@
 			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
 			<xs:element name="VehicleRef" type="IBIS-IP.NMTOKEN"/>
 			<xs:element name="DefaultLanguage" type="IBIS-IP.language"/>
-			<xs:element name="TripInformation" type="TripInformationStructure" maxOccurs="2"/>
+			<xs:element name="TripInformation" type="TripInformationStructure" minOccurs="0" maxOccurs="2"/>
+				<xs:annotation>
+					<xs:documentation>if vehicle is not on a trip and no tripinformation is available occurrence typically is 0
+									if vehicle is on a trip or knows the next trip to run  occurrence typically is 1
+									if vehicle is on a trip and also knows the subsequent trip that info can be provided in the second TripInformation so occurrence is 2</xs:documentation>
+				</xs:annotation>
 			<xs:element name="CurrentStopIndex" type="IBIS-IP.int">
 				<xs:annotation>
 					<xs:documentation>Index of the Stoppoint in the Stopsequence, which is the next Stop</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:group ref="VehicleInformationGroup"/>
+			<xs:element name="DisplayContent" type="DisplayContentStructure" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Global display content - this content should be used if no stop specific display content is available
+					please make sure that the global display content and the stop specific content are provided for the same DisplayContentRefs. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<!--++ CurrentAnnouncement ++-->
@@ -212,6 +223,7 @@
 					<xs:documentation>Gives information, if the stopInformation inside the vehicle is in active or in passiv state (intentionally, e.g. due to "route left)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="TripState" type="TripStateEnumeration" minOccurs="0"/>
 		</xs:sequence>
 	</xs:group>
 </xs:schema>
