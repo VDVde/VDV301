@@ -388,6 +388,11 @@
 			<xs:element name="LineName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="LineShortName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="LineNumber" type="IBIS-IP.int" minOccurs="0"/>
+			<xs:element name="LineCode" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>identifier of a symbol number , which is used by displays see LINIEN_CODE in VDV 452 chapter 9.7.2 REC_LID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="LogMessageStructure">
