@@ -44,7 +44,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:group ref="VehicleInformationGroup"/>
-			<xs:element name="DisplayContent" type="DisplayContentStructure" minOccurs="0">
+			<xs:element name="GlobalDisplayContent" type="DisplayContentStructure" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Global display content - this content should be used if no stop specific display content is available
 					please make sure that the global display content and the stop specific content are provided for the same DisplayContentRefs. </xs:documentation>
