@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.0.xsd"/>
+	<!--==== SystemDocumentationService Operations ====-->
+	<xs:group name="SystemDocumentationServiceGroup">
+		<xs:sequence>
+			<xs:element name="SystemDocumentationService.GetSystemConfigurationResponse" type="SystemDocumentationService.GetSystemConfigurationResponseStructure"/>
+			<xs:element name="SystemDocumentationService.StoreSystemConfigurationRequest" type="SystemDocumentationService.StoreSystemConfigurationRequestStructure"/>
+			<xs:element name="SystemDocumentationService.RetrieveLogMessagesRequest" type="SystemDocumentationService.RetrieveLogMessagesRequestStructure"/>
+			<xs:element name="SystemDocumentationService.RetrieveLogMessagesResponse" type="SystemDocumentationService.RetrieveLogMessagesResponseStructure"/>
+			<xs:element name="SystemDocumentationService.StoreLogMessagesRequest" type="SystemDocumentationService.StoreLogMessagesRequestStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ GetSystemConfiguration ++-->
+	<xs:element name="SystemDocumentationService.GetSystemConfigurationResponse" type="SystemDocumentationService.GetSystemConfigurationResponseStructure"/>
+	<xs:complexType name="SystemDocumentationService.GetSystemConfigurationResponseStructure">
+		<xs:choice>
+			<xs:element name="SystemConfiguration" type="SystemDocumentationService.SystemConfigurationData"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SystemDocumentationService.SystemConfigurationData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ServiceStartList" type="ServiceStartListStructure"/>
+			<xs:element name="DeviceSpecificationList" type="DeviceSpecificationListStructure"/>
+			<xs:element name="HeartbeatInterval" type="IBIS-IP.duration" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ StoreSystemConfiguration ++-->
+	<xs:element name="SystemDocumentationService.StoreSystemConfigurationRequest" type="SystemDocumentationService.StoreSystemConfigurationRequestStructure"/>
+	<xs:complexType name="SystemDocumentationService.StoreSystemConfigurationRequestStructure">
+		<xs:sequence>
+			<xs:element name="ServiceStartList" type="ServiceStartListStructure"/>
+			<xs:element name="DeviceSpecificationList" type="DeviceSpecificationListStructure"/>
+			<xs:element name="HeartbeatInterval" type="IBIS-IP.duration" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ RetrieveLogMessages ++-->
+	<xs:element name="SystemDocumentationService.RetrieveLogMessagesRequest" type="SystemDocumentationService.RetrieveLogMessagesRequestStructure"/>
+	<xs:complexType name="SystemDocumentationService.RetrieveLogMessagesRequestStructure">
+		<xs:sequence>
+			<xs:element name="InformationType" type="SystemDocumentationInformationEnumeration"/>
+			<xs:element name="NumberOfEntries" type="IBIS-IP.int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SystemDocumentationService.RetrieveLogMessagesResponse" type="SystemDocumentationService.RetrieveLogMessagesResponseStructure"/>
+	<xs:complexType name="SystemDocumentationService.RetrieveLogMessagesResponseStructure">
+		<xs:choice>
+			<xs:element name="LogMessageData" type="SystemDocumentationService.LogMessageData"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SystemDocumentationService.LogMessageData">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="Message" type="MessageStructure" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ StoreLogMessages ++-->
+	<xs:element name="SystemDocumentationService.StoreLogMessagesRequest" type="SystemDocumentationService.StoreLogMessagesRequestStructure"/>
+	<xs:complexType name="SystemDocumentationService.StoreLogMessagesRequestStructure">
+		<xs:sequence>
+			<xs:element name="LogMessage" type="LogMessageStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DataVersion" type="DataVersionStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

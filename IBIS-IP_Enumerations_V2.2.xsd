@@ -47,6 +47,7 @@
 			<xs:enumeration value="Other"/>
 			<xs:enumeration value="TestDevice"/>
 			<xs:enumeration value="MultiFunctionalDisplay"/>
+			<xs:enumeration value="CombiDevice"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="DeviceStateEnumeration">
