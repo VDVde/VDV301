@@ -229,8 +229,6 @@
 			<xs:enumeration value="GNSSLocationService"/>
 			<xs:enumeration value="NetworkLocationService"/>
 			<xs:enumeration value="PassengerCountingService"/>
-			<xs:enumeration value="SystemDocumentationService"/>
-			<xs:enumeration value="SystemManagementService"/>
 			<xs:enumeration value="TicketingService"/>
 			<xs:enumeration value="TimeService"/>
 			<xs:enumeration value="TestService"/>
