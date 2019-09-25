@@ -3,8 +3,8 @@
 <!--  IVU Traffic Technologies AG, Carsten Weise -->
 <!-- Mit XMLSpy v2018 rel. 2  (http://www.altova.com) von Bernd Schubert (iris-GmbH) bearbeitet, IBIS-IP 2.1 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_common_V2.1.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.1.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
 	<!--==== DeviceManagementService Operations====-->
 	<xs:group name="DeviceManagementServiceGroup">
 		<xs:sequence>
@@ -22,12 +22,6 @@
 			<xs:element name="DeviceManagementService.UnsubscribeAllSubdeviceInformationResponse" type="UnsubscribeResponseStructure"/>
 			<xs:element name="DeviceManagementService.GetDeviceConfigurationRequest"/>
 			<xs:element name="DeviceManagementService.GetDeviceConfigurationResponse" type="DeviceManagementService.GetDeviceConfigurationResponseStructure"/>
-			<xs:element name="DeviceManagementService.SubscribeDeviceConfigurationRequest" type="SubscribeRequestStructure"/>
-			<xs:element name="DeviceManagementService.SubscribeDeviceConfigurationResponse" type="SubscribeResponseStructure"/>
-			<xs:element name="DeviceManagementService.UnsubscribeDeviceConfigurationRequest" type="UnsubscribeRequestStructure"/>
-			<xs:element name="DeviceManagementService.UnsubscribeDeviceConfigurationResponse" type="UnsubscribeResponseStructure"/>
-			<xs:element name="DeviceManagementService.SetDeviceConfigurationRequest" type="DeviceManagementService.SetDeviceConfigurationRequestStructure"/>
-			<xs:element name="DeviceManagementService.SetDeviceConfigurationResponse" type="DataAcceptedResponseStructure"/>
 			<xs:element name="DeviceManagementService.GetDeviceStatusRequest"/>
 			<xs:element name="DeviceManagementService.GetDeviceStatusResponse" type="DeviceManagementService.GetDeviceStatusResponseStructure"/>
 			<xs:element name="DeviceManagementService.SubscribeDeviceStatusRequest" type="SubscribeRequestStructure"/>
@@ -70,18 +64,8 @@
 			<xs:element name="DeviceManagementService.SubscribeServiceStatusResponse" type="SubscribeResponseStructure"/>
 			<xs:element name="DeviceManagementService.UnsubscribeServiceStatusRequest" type="UnsubscribeRequestStructure"/>
 			<xs:element name="DeviceManagementService.UnsubscribeServiceStatusResponse" type="UnsubscribeResponseStructure"/>
-			<xs:element name="DeviceManagementService.ActivateDeviceRequest"/>
-			<xs:element name="DeviceManagementService.ActivateDeviceResponse" type="DataAcceptedResponseStructure"/>
-			<xs:element name="DeviceManagementService.DeactivateDeviceRequest"/>
-			<xs:element name="DeviceManagementService.DeactivateDeviceResponse" type="DataAcceptedResponseStructure"/>
 			<xs:element name="DeviceManagementService.RestartDeviceRequest"/>
 			<xs:element name="DeviceManagementService.RestartDeviceResponse" type="DataAcceptedResponseStructure"/>
-			<xs:element name="DeviceManagementService.StartServiceRequest" type="DeviceManagementService.StartServiceRequestStructure"/>
-			<xs:element name="DeviceManagementService.StartServiceResponse" type="DataAcceptedResponseStructure"/>
-			<xs:element name="DeviceManagementService.RestartServiceRequest" type="DeviceManagementService.RestartServiceRequestStructure"/>
-			<xs:element name="DeviceManagementService.RestartServiceResponse" type="DataAcceptedResponseStructure"/>
-			<xs:element name="DeviceManagementService.StopServiceRequest" type="DeviceManagementService.StopServiceRequestStructure"/>
-			<xs:element name="DeviceManagementService.StopServiceResponse" type="DataAcceptedResponseStructure"/>
 			<xs:element name="DeviceManagementService.InstallUpdateRequest" type="DeviceManagementService.InstallUpdateRequestStructure"/>
 			<xs:element name="DeviceManagementService.InstallUpdateResponse" type="DeviceManagementService.InstallUpdateResponseStructure"/>
 			<xs:element name="DeviceManagementService.RetrieveUpdateStateRequest" type="DeviceManagementService.RetrieveUpdateStateRequestStructure"/>
@@ -143,14 +127,6 @@
 			<xs:element name="DeviceID" type="IBIS-IP.int"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ SetDeviceConfiguration ++-->
-	<xs:element name="DeviceManagementService.SetDeviceConfigurationRequest" type="DeviceManagementService.SetDeviceConfigurationRequestStructure"/>
-	<xs:complexType name="DeviceManagementService.SetDeviceConfigurationRequestStructure">
-		<xs:sequence>
-			<xs:element name="DeviceID" type="IBIS-IP.int"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="DeviceManagementService.SetDeviceConfigurationResponse" type="DataAcceptedResponseStructure"/>
 	<!--++ GetDeviceStatus ++-->
 	<xs:element name="DeviceManagementService.GetDeviceStatusResponse" type="DeviceManagementService.GetDeviceStatusResponseStructure"/>
 	<xs:complexType name="DeviceManagementService.GetDeviceStatusResponseStructure">
@@ -265,33 +241,8 @@
 			<xs:element name="ServiceSpecificationWithStateList" type="ServiceSpecificationWithStateListStructure"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!--++ ActivateDevice ++-->
-	<xs:element name="DeviceManagementService.ActivateDeviceResponse" type="DataAcceptedResponseStructure"/>
-	<!--++ DeactivateDevice ++-->
-	<xs:element name="DeviceManagementService.DeactivateDeviceResponse" type="DataAcceptedResponseStructure"/>
 	<!--++ RestartDevice ++-->
 	<xs:element name="DeviceManagementService.RestartDeviceResponse" type="DataAcceptedResponseStructure"/>
-	<!--++ StartService ++-->
-	<xs:element name="DeviceManagementService.StartServiceRequest" type="DeviceManagementService.StartServiceRequestStructure"/>
-	<xs:complexType name="DeviceManagementService.StartServiceRequestStructure">
-		<xs:sequence>
-			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!--++ RestartService ++-->
-	<xs:element name="DeviceManagementService.RestartServiceRequest" type="DeviceManagementService.RestartServiceRequestStructure"/>
-	<xs:complexType name="DeviceManagementService.RestartServiceRequestStructure">
-		<xs:sequence>
-			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!--++ StopService ++-->
-	<xs:element name="DeviceManagementService.StopServiceRequest" type="DeviceManagementService.StopServiceRequestStructure"/>
-	<xs:complexType name="DeviceManagementService.StopServiceRequestStructure">
-		<xs:sequence>
-			<xs:element name="ServiceSpecification" type="ServiceSpecificationStructure"/>
-		</xs:sequence>
-	</xs:complexType>
 	<!--++ InstallUpdate ++-->
 	<xs:complexType name="DeviceManagementService.InstallUpdateRequestStructure">
 		<xs:sequence>
@@ -453,6 +404,8 @@
 		<xs:sequence>
 			<xs:element name="DeviceStatusName" type="IBIS-IP.string"/>
 			<xs:element name="DeviceStatusFlag" type="IBIS-IP.boolean"/>
+			<xs:element name="DeviceStatusImpact" type="DeviceStateEnumeration"> </xs:element>
+			<xs:element name="DeviceStatusPriority" type="IBIS-IP.int"></xs:element>			
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="DeviceStatusInformationStructure">

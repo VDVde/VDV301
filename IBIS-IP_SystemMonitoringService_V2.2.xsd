@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!--  IVU Traffic Technologies AG, Carsten Weise -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
+	<!--==== SystemMonitoringService Operations====-->
+	<xs:group name="SystemMonitoringServiceGroup">
+		<xs:sequence>
+			<xs:element name="SystemMonitoringService.GetDeviceStatusResponse" type="SystemMonitoringService.GetDeviceStatusResponseStructure"/>
+			<xs:element name="SystemMonitoringService.GetServiceStatusResponse" type="SystemMonitoringService.GetServiceStatusResponseStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--=== ServiceDefinitions ===-->
+	<!--++ GetDeviceStatus ++-->
+	<xs:element name="SystemMonitoringService.GetDeviceStatusResponse" type="SystemMonitoringService.GetDeviceStatusResponseStructure"/>
+	<xs:complexType name="SystemMonitoringService.GetDeviceStatusResponseStructure">
+		<xs:choice>
+			<xs:element name="SystemMonitoringService.GetDeviceStatusResponseData" type="SystemMonitoringService.GetDeviceStatusResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SystemMonitoringService.GetDeviceStatusResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="DeviceSpecificationWithStateList" type="DeviceSpecificationWithStateListStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--++ GetServiceStatus ++-->
+	<xs:element name="SystemMonitoringService.GetServiceStatusResponse" type="SystemMonitoringService.GetServiceStatusResponseStructure"/>
+	<xs:complexType name="SystemMonitoringService.GetServiceStatusResponseStructure">
+		<xs:choice>
+			<xs:element name="SystemMonitoringService.GetServiceStatusResponseData" type="SystemMonitoringService.GetServiceStatusResponseDataStructure"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SystemMonitoringService.GetServiceStatusResponseDataStructure">
+		<xs:sequence>
+			<xs:element name="TimeStamp" type="IBIS-IP.dateTime"/>
+			<xs:element name="ServiceIdentificationWithStateList" type="ServiceIdentificationWithStateListStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
