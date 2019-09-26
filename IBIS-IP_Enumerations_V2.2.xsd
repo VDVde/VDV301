@@ -241,7 +241,6 @@
 			<xs:enumeration value="TrainSetManagementService"/>
 			<xs:enumeration value="TicketValidationService"/>
 			<xs:enumeration value="HTMLDisplayService"/>
-			<xs:enumeration value="SystemMonitoringService"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ServiceStateEnumeration">

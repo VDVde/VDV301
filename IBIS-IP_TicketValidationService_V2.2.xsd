@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
 	
 	<!--====  TicketValidationService ====-->
 	<xs:element name="TicketValidationService.GetCurrentStopPointResponse"  type="TicketValidationService.GetCurrentStopPointResponseStructure"/>
