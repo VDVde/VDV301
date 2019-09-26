@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="IBIS-IP_common_V1.0.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_Enumerations_V1.0.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
+	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
 	
 	<!--====  TicketValidationService ====-->
-	<xs:element name="TicketValidationService.GetCurrentStopPointResponse"  type="TicketValidationService.GetCurrentStopPointResponseStructure"/>
+	<xs:element name="TicketValidationService.GetCurrentTariffStopResponse"  type="TicketValidationService.GetCurrentTariffStopResponseStructure"/>
 	<xs:element name="TicketValidationService.GetRazziaResponse"            type="TicketValidationService.GetRazziaResponseStructure"/>
 	<xs:element name="TicketValidationService.GetCurrentLineResponse"       type="TicketValidationService.GetCurrentLineResponseStructure"/>
 	<xs:element name="TicketValidationService.GetVehicleDataResponse"       type="TicketValidationService.GetVehicleDataResponseStructure"/>
@@ -13,7 +13,7 @@
 
 	<xs:group name="TicketValidationServiceOperations">
 		<xs:sequence>
-			<xs:element name="TicketValidationService.GetCurrentStopPointResponse"  type="TicketValidationService.GetCurrentStopPointResponseStructure"/>
+			<xs:element name="TicketValidationService.GetCurrentTariffStopResponse"  type="TicketValidationService.GetCurrentTariffStopResponseStructure"/>
 			<xs:element name="TicketValidationService.GetRazziaResponse"            type="TicketValidationService.GetRazziaResponseStructure"/>
 			<xs:element name="TicketValidationService.GetCurrentLineResponse"       type="TicketValidationService.GetCurrentLineResponseStructure"/>
 			<xs:element name="TicketValidationService.GetVehicleDataResponse"       type="TicketValidationService.GetVehicleDataResponseStructure"/>
@@ -22,17 +22,17 @@
 		</xs:sequence>
 	</xs:group>
 	
-	<!--++ CurrentStopPoint ++-->
-	<xs:complexType name="TicketValidationService.GetCurrentStopPointResponseStructure">
+	<!--++ CurrentTariffStop ++-->
+	<xs:complexType name="TicketValidationService.GetCurrentTariffStopResponseStructure">
 		<xs:choice>
-			<xs:element name="CurrentStopPointData"  type="TicketValidationService.CurrentStopPointDataStructure"/>
+			<xs:element name="CurrentTariffStopData"  type="TicketValidationService.CurrentTariffStopDataStructure"/>
 			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"/>
 		</xs:choice>
 	</xs:complexType>
-	<xs:complexType name="TicketValidationService.CurrentStopPointDataStructure">
+	<xs:complexType name="TicketValidationService.CurrentTariffStopDataStructure">
 		<xs:sequence>
 			<xs:element name="TimeStamp"        type="IBIS-IP.dateTime"/>
-			<xs:element name="CurrentStopPoint" type="StopInformationStructure"/>
+			<xs:element name="CurrentTariffStop" type="StopInformationStructure"/>
 			<xs:element name="CurrentTripRef"   type="IBIS-IP.NMTOKEN" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>

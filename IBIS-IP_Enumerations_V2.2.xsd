@@ -241,7 +241,6 @@
 			<xs:enumeration value="TrainSetManagementService"/>
 			<xs:enumeration value="TicketValidationService"/>
 			<xs:enumeration value="HTMLDisplayService"/>
-			<xs:enumeration value="SystemMonitoringService"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ServiceStateEnumeration">
@@ -289,6 +288,25 @@
 			<xs:enumeration value="rail"/>
 			<xs:enumeration value="tram"/>
 			<xs:enumeration value="underground"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TripStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information about trip state,
+			EmptyRun: trips is selected but has not yet started ( e.g. drive from depot to first stop point )
+			OnTrip: on trip ,
+			OffTrip: trip has ended there is no next trip yet, ( e.g. drive to the depot )
+			TripBreak: trip has already started but there is a break now it will be continued ( e.g. driver break),
+			OffDuty: no trip, bus parked ( e.g. driver has logged of, OBU still running )
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EmptyRun"/>
+			<xs:enumeration value="OnTrip"/>
+			<xs:enumeration value="OffTrip"/>
+			<xs:enumeration value="TripBreak"/>
+			<xs:enumeration value="OffDuty"/>
+			<xs:enumeration value="unknown"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
