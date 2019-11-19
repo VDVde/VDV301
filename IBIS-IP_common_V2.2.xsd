@@ -182,7 +182,12 @@
 			</xs:element>
 			<xs:element name="TransportMode" type="VehicleStructure" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Describes the mode of the leaving vehicle </xs:documentation>
+					<xs:documentation>Describes the mode of the pick-up vehicle, DEPRECATED !, THE ConnectionMode SHOULD BE USED INSTEAD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ConnectionMode" type="NetexMode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mode- and Submode information of the pick-up vehicle in accordance with Netex</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="ExpectedDepartureTime" type="IBIS-IP.dateTime" minOccurs="0">
@@ -244,8 +249,7 @@
 	<xs:complexType name="DeviceInformationStructure">
 		<xs:sequence>
 			<xs:group ref="DeviceInformationGroup"/>
-			<xs:element name="DataVersionList" type="DataVersionListStructure" minOccurs="0">
-			</xs:element>
+			<xs:element name="DataVersionList" type="DataVersionListStructure" minOccurs="0"/>
 			<xs:element name="WebInterfaceAddress" type="IBIS-IP.anyURI" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -879,7 +883,7 @@
 	<xs:element name="SubscribeResponse" type="SubscribeResponseStructure"/>
 	<xs:complexType name="SubscribeResponseStructure">
 		<xs:annotation>
-				<xs:documentation>For compatibility reasons, this structure is now a sequence of members, all of which are optional - of course, at least one member should be included in meaningful data.</xs:documentation>
+			<xs:documentation>For compatibility reasons, this structure is now a sequence of members, all of which are optional - of course, at least one member should be included in meaningful data.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="Active" type="IBIS-IP.boolean" minOccurs="0"/>
@@ -888,7 +892,7 @@
 					<xs:documentation>If the service returns a heartbeat value and it is not 0, the subscriber can expect that the service will send data at least every heartbeat seconds.	This heartbeat can be used to monitor the connection quality by the client. </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"  minOccurs="0"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="UnsubscribeRequest" type="UnsubscribeRequestStructure"/>
@@ -903,7 +907,7 @@
 	<xs:complexType name="UnsubscribeResponseStructure">
 		<xs:sequence>
 			<xs:element name="Active" type="IBIS-IP.boolean"/>
-			<xs:element name="OperationErrorMessage" type="IBIS-IP.string"  minOccurs="0"/>
+			<xs:element name="OperationErrorMessage" type="IBIS-IP.string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DataAcceptedResponse" type="DataAcceptedResponseStructure"/>
@@ -949,4 +953,19 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
+	<xs:complexType name="NetexMode">
+		<xs:annotation>
+			<xs:documentation>a combined Mode and SubMode information in accordance with Netex "netex_submode_version.xsd"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:element name="PtMainMode" type="PtSubModesEnumeration" minOccurs="0"/>
+				<xs:element name="PrivateMainMode" type="PrivateSubModesEnumeration" minOccurs="0"/>
+			</xs:choice>
+			<xs:choice minOccurs="0">
+				<xs:group ref="PtSubmodeChoiceGroup" minOccurs="0"/>
+				<xs:group ref="PrivateSubmodeChoiceGroup" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>
