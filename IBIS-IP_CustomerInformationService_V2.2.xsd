@@ -213,7 +213,16 @@
 					<xs:documentation>Gives information, if the vehicle is moving forward, default value is "true"</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="VehicleMode" type="VehicleModeEnumeration" minOccurs="0"/>
+			<xs:element name="VehicleMode" type="VehicleModeEnumeration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DEPRECATED, is of type VehicleModeEnumeration. MyOwnVehicleMode SHOULD BE USED INSTEAD</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MyOwnVehicleMode" type="NetexMode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mode- and Submode information vehicle I am in - in accordance with Netex</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="SpeakerActive" type="IBIS-IP.boolean" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Gives information, if the loud speaker is activated for a passenger announcement</xs:documentation>

@@ -41,5 +41,5 @@
 	<!--=== SetNeutralMode Response ===-->
 	<xs:element name="TrainSetManagementService.SetNeutralModeResponse" type="DataAcceptedResponseStructure"/>
 	<!--=== GetTrainSetComposition ===-->
-	<xs:element name="TrainSetManagementService.GetTrainSetComposition" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
+	<xs:element name="TrainSetManagementService.GetTrainSetCompositionResponse" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
 </xs:schema>

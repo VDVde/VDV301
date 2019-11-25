@@ -3,7 +3,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
 	<xs:include schemaLocation="IBIS-IP_Enumerations_V2.2.xsd"/>
-	<xs:include schemaLocation="IBIS-IP_CustomerInformationService_V2.2.xsd"/>
+	<!--xs:include schemaLocation="IBIS-IP_CustomerInformationService_V2.2.xsd"/> -->
 	<!--==== TrainSetDataService Operations ====-->
 	<xs:group name="TrainSetDataServiceOperations">
 		<xs:sequence>
@@ -25,6 +25,24 @@
 			<!-- Please note: the same structures can be used also for subscription mechanisms to the TripInformation -->
 			<xs:element name="TrainSetDataService.RetrieveTripInformationRequest" type="TrainSetDataService.RetrieveTripInformationRequestStructure"/>
 			<xs:element name="TrainSetDataService.RetrieveTripInformationResponse" type="TrainSetDataService.RetrieveTripInformationResponseStructure"/>
+			<!-- Subscriptions to "Retrieve operations" are different from subscriptions to "Get operations" -->
+			<!-- (I.e. to the GetAllData operation there is a SubscribeAllData operation) -->
+			<!-- (Below mentioned we define i.e. a SubscribeTripRequest to complement the RetrieveTripRequest.) -->
+			<!-- The fundamental difference is that a Retrieve operation has one or more specific parameters which define the dataset to be retreived. -->
+			<!-- A Get operation has no such parameters.-->
+			<!-- For a subscription to a Get operation there are only the three technical parameters "Client-IP-Address", "ReplyPort" and "ReplyPath" needed. -->
+			<!-- (cf. SubscribeRequestStructure in IBIS-IP_common_V2.0.xsd)-->
+			<!-- Subscriptions like SubscribeTripRefRequest and SubscribeTripInformationRequest, need to provide the "CoachNumber" in addition, -->
+			<!-- to make clear for which coach the trip data are needed.-->
+			<!-- That is why a separate "TrainSetSubscribeRequestStructure" is defined here.-->
+			<xs:element name="TrainSetDataService.SubscribeTripRefRequest" type="TrainSetDataService.TrainSetSubscribeRequestStructure"/>
+			<xs:element name="TrainSetDataService.SubscribeTripRefResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="TrainSetDataService.SubscribeTripInformationRequest" type="TrainSetDataService.TrainSetSubscribeRequestStructure"/>
+			<xs:element name="TrainSetDataService.SubscribeTripInformationResponse" type="SubscribeResponseStructure"/>
+			<xs:element name="TrainSetDataService.UnsubscribeTripRefRequest" type="TrainSetDataService.TrainSetUnsubscribeRequestStructure"/>
+			<xs:element name="TrainSetDataService.UnsubscribeTripRefResponse" type="UnsubscribeResponseStructure"/>
+			<xs:element name="TrainSetDataService.UnsubscribeTripInformationRequest" type="TrainSetDataService.TrainSetUnsubscribeRequestStructure"/>
+			<xs:element name="TrainSetDataService.UnsubscribeTripInformationResponse" type="UnsubscribeResponseStructure"/>
 		</xs:sequence>
 	</xs:group>
 	<!--=====================================================================-->
@@ -47,6 +65,7 @@
 	</xs:complexType>
 	<!--=== RetrieveTripRefResponse ===-->
 	<xs:element name="TrainSetDataService.RetrieveTripRefResponse" type="TrainSetDataService.RetrieveTripRefResponseStructure"/>
+	<xs:element name="TrainSetDataService.SubscribeTripRefResponse" type="TrainSetDataService.RetrieveTripRefResponseStructure"/>
 	<xs:complexType name="TrainSetDataService.RetrieveTripRefResponseStructure">
 		<xs:sequence>
 			<xs:element name="TripRef" type="IBIS-IP.NMTOKEN"/>
@@ -65,11 +84,34 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<!--=== RetrieveTripInformationResponse ===-->
+	<!--=== RetrieveTripInformationResponseStructure ===-->
 	<xs:element name="TrainSetDataService.RetrieveTripInformationResponse" type="TrainSetDataService.RetrieveTripInformationResponseStructure"/>
+	<xs:element name="TrainSetDataService.SubscribeTripInformationResponse" type="TrainSetDataService.RetrieveTripInformationResponseStructure"/>
 	<xs:complexType name="TrainSetDataService.RetrieveTripInformationResponseStructure">
 		<xs:sequence>
 			<xs:element name="TripInformation" type="TripInformationStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TrainSetDataService.SubscribeTripRefRequest" type="TrainSetDataService.TrainSetSubscribeRequestStructure"/>
+	<xs:element name="TrainSetDataService.SubscribeTripInformationRequest" type="TrainSetDataService.TrainSetSubscribeRequestStructure"/>
+	<xs:element name="TrainSetDataService.UnsubscribeTripRefRequest" type="TrainSetDataService.TrainSetUnsubscribeRequestStructure"/>
+	<xs:element name="TrainSetDataService.UnsubscribeTripInformationRequest" type="TrainSetDataService.TrainSetUnsubscribeRequestStructure"/>
+	<!--=== TrainSetSubscribeRequestStructure ===-->
+	<xs:complexType name="TrainSetDataService.TrainSetSubscribeRequestStructure">
+		<xs:sequence>
+			<xs:element name="Client-IP-Address" type="IBIS-IP.string"/>
+			<xs:element name="ReplyPort" type="IBIS-IP.int" minOccurs="0"/>
+			<xs:element name="ReplyPath" type="IBIS-IP.string" minOccurs="0"/>
+			<xs:element name="CoachNumber" type="IBIS-IP.string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--=== TrainSetUnsubscribeRequestStructure ===-->
+	<xs:complexType name="TrainSetDataService.TrainSetUnsubscribeRequestStructure">
+		<xs:sequence>
+			<xs:element name="Client-IP-Address" type="IBIS-IP.string"/>
+			<xs:element name="ReplyPort" type="IBIS-IP.int" minOccurs="0"/>
+			<xs:element name="ReplyPath" type="IBIS-IP.string" minOccurs="0"/>
+			<xs:element name="CoachNumber" type="IBIS-IP.string"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

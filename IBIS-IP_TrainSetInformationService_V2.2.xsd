@@ -2,7 +2,7 @@
 <!-- Mit XMLSpy v2018 sp1 (x64) (http://www.altova.com) von Torsten Franke (IVU Traffic Technologies AG) bearbeitet -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="IBIS-IP_common_V2.2.xsd"/>
-<!--	<xs:include schemaLocation="	"/> -->
+	<!--	<xs:include schemaLocation="	"/> -->
 	<xs:simpleType name="CoachStateEnumeration">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Master"/>
@@ -35,6 +35,11 @@
 	<!--=== GetTrainSetComposition ===-->
 	<xs:element name="TrainSetInformationService.GetTrainSetCompositionResponse" type="TrainSetInformationService.GetTrainSetCompositionResponseStructure"/>
 	<xs:complexType name="TrainSetInformationService.GetTrainSetCompositionResponseStructure">
+		<xs:sequence minOccurs="1">
+			<xs:element name="SingleCoach" type="SingleCoachInATrainSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SingleCoachInATrainSet">
 		<xs:sequence>
 			<xs:element name="CoachType" type="IBIS-IP.string" minOccurs="0"/>
 			<xs:element name="CoachNumber" type="IBIS-IP.string"/>
