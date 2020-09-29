@@ -713,6 +713,21 @@
 					<xs:documentation>The direction of the route, 1->forward 2->backwards and  0->UNDEFINED </xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="RunNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The run number (Kurs-Nummer) the trip is operated </xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element name="PatternNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The pattern number (Linienfahrweg-Nummer) the trip is operated </xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element name="PathDestinationNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The path destination number (RoutenZiel-Nummer) the trip is operated </xs:documentation>
+				</xs:annotation>
+			</xs:element>									
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TripSequenceStructure">
