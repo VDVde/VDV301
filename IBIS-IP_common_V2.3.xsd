@@ -350,6 +350,11 @@
 					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
 				</xs:annotation>
 			</xs:element>		
+			<xs:element name="RunNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The run number (Kurs-Nummer) the trip is operated </xs:documentation>
+				</xs:annotation>
+			</xs:element>								
 			<xs:group ref="DisplayPolicyGroup" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Group for Display-Information if there is more than one content at the same time</xs:documentation>
