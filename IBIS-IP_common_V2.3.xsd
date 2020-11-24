@@ -305,11 +305,56 @@
 					<xs:documentation>Additional Information Text, which could be displayed, e.g. "Extra Ride", "Express", ... </xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="AdditionalInformation1" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation2" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation3" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation4" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation5" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation6" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation7" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation8" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalInformation9" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Additional Information Text, which is assigned project-specific</xs:documentation>
+				</xs:annotation>
+			</xs:element>		
 			<xs:element name="RunNumber" type="IBIS-IP.int" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>The run number (Kurs-Nummer) the trip is operated </xs:documentation>
 				</xs:annotation>
-			</xs:element>									
+			</xs:element>								
 			<xs:group ref="DisplayPolicyGroup" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Group for Display-Information if there is more than one content at the same time</xs:documentation>
@@ -589,7 +634,13 @@
 			<xs:element name="DisplayContent" type="DisplayContentStructure" maxOccurs="unbounded"/>
 			<xs:element name="StopAnnouncement" type="AnnouncementStructure" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="ArrivalScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>
+			<xs:element name="ArrivalExpected" type="IBIS-IP.dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A resolution of 30s is recommended, for the display it is recommended to show the arrival time in minutes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="DepartureScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>
+			<xs:element name="DepartureExpected" type="IBIS-IP.dateTime" minOccurs="0"/>
 			<xs:element name="RecordedArrivalTime" type="IBIS-IP.dateTime" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>This Value is needed for the demonstration at the SSB</xs:documentation>
@@ -648,6 +699,15 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="AdditionalTextMessage" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage1" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage2" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage3" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage4" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage5" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage6" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage7" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage8" type="InternationalTextType" minOccurs="0"/>
+			<xs:element name="AdditionalTextMessage9" type="InternationalTextType" minOccurs="0"/>
 			<xs:element name="AdditionalAnnouncement" type="AdditionalAnnouncementStructure" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>not StopPointAnnouncements; additional announcements; e.g. of the operator or dispatcher</xs:documentation>
