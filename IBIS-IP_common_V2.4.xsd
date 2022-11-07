@@ -448,7 +448,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="LinePublicCode" type="IBIS-IP.string" minOccurs="0" maxOccurs="1"/>			
-			<xs:element name="LineSymbolText" type="IBIS-IP.string" minOccurs="0" maxOccurs="1"/>			
+			<xs:element name="LineSymbolText" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded"/>			
 			<xs:element name="ExternalLineRef" type="IBIS-IP.string" minOccurs="0" maxOccurs="1"/>			
 		</xs:sequence>
 	</xs:complexType>
