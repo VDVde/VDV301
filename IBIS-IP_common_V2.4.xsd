@@ -774,7 +774,17 @@
 				<xs:annotation>
 					<xs:documentation>The path destination number (RoutenZiel-Nummer) the trip is operated </xs:documentation>
 				</xs:annotation>
-			</xs:element>									
+			</xs:element>
+			<xs:element name="BlockNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique block number per day of operational day. Used for logon on the vehicle in block operation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExternalVehicleJourneyRef" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>International trip ID e.g. in Germany according to VDV433 (DFID), internationally according to NeTEx.</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="TripSequenceStructure">
