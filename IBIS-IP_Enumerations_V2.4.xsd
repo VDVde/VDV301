@@ -72,7 +72,7 @@
 			<xs:enumeration value="Bike"/>
 			<xs:enumeration value="Child"/>
 			<xs:enumeration value="Pram"/>
-			<xs:enumeration value="WheelChair"/>
+			<xs:enumeration value="Wheelchair"/>
 			<xs:enumeration value="Unidentified"/>
 			<xs:enumeration value="Other"/>
 		</xs:restriction>
