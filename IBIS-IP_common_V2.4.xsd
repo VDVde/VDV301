@@ -447,6 +447,21 @@
 					<xs:documentation>identifier of a symbol number , which is used by displays see LINIEN_CODE in VDV 452 chapter 9.7.2 REC_LID</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="LinePublicCode" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Published line identification for the passenger. For displaying the line on all media such as line network maps, timetable printouts, passenger information on the internet, on signs, the stop displays, on the exterior and interior displays of the vehicles.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LineSymbolText" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specification of a xml formatted text to reference an symbol for special lines. Used as alternative to the LineSymbolCode. For example for displaying an airport symbol the following string could be used: <icon type=" airport "> airport </icon></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExternalLineRef" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>International line ID e.g. in Germany according to VDV433 DLID, internationally according to NeTEx.</xs:documentation>
+				</xs:annotation>
+			</xs:element>		
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="LogMessageStructure">
@@ -597,7 +612,9 @@
 			<xs:element name="DisplayContent" type="DisplayContentStructure" maxOccurs="unbounded"/>
 			<xs:element name="StopAnnouncement" type="AnnouncementStructure" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="ArrivalScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>
+			<xs:element name="ArrivalExpected" type="IBIS-IP.dateTime" minOccurs="0"/>
 			<xs:element name="DepartureScheduled" type="IBIS-IP.dateTime" minOccurs="0"/>
+			<xs:element name="DepartureExpected" type="IBIS-IP.dateTime" minOccurs="0"/>
 			<xs:element name="RecordedArrivalTime" type="IBIS-IP.dateTime" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>This Value is needed for the demonstration at the SSB</xs:documentation>
@@ -657,6 +674,31 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="FareZone" type="IBIS-IP.NMTOKEN" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StopShortName" type="InternationalTextType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Short name of the stop in the planning program and ITCS. To identify a stop on media with limited display length, e.g. older interior displays, on-board computer or ticket printer terminal.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StopLongNo" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Stop number that is used throughout the transport association (PTA) for activation of ticket printers and ticket validators. This number is not necessarily unique and is only used for stops that are used productively. This number is not required for non-productive stops (e.g. depots, parking facilities, car parks).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PointNumber" type="IBIS-IP.int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Transport company-wide internal unique number of a stopping point in the network.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StopGlobalID" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>International stop ID e.g. in Germany according to VDV432 (DHID), internationally according to NeTEx, NAPTAN.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StopPointGlobalID" type="IBIS-IP.string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>International stopping point ID e.g. in Germany according to VDV432 (DHID), internationally according to NeTEx, NAPTAN.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StopPointTariffInformationStructure">
