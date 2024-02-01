@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2018 sp1 (x64) (http://www.altova.com) von Torsten Franke (IVU Traffic Technologies AG) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="IBIS-IP_common_V2.3.xsd"/>
+	<!--==== AnalogueRadioService Operations ====-->
+	<xs:group name="AnalogRadioServiceOperations">
+		<xs:sequence>
+			<!--=====================================================-->
+			<!--=== Operation related to the AnalogRadioService  ===-->
+			<!--=====================================================-->
+			<!-- this operation is used to send a telegram from the Onboard unit to the analo radio device -->
+			<xs:element name="AnalogRadioService.SendTelegram" type="AnalogRadioService.RadioTelegramStructure"/>
+		</xs:sequence>
+	</xs:group>
+	<!--===================================================================================-->
+	<!--=== Defition of operation and data structures related to the AnalogRadioService ===-->
+	<!--===================================================================================-->
+	<!--=== SendTelegram Request ===-->
+	<xs:element name="AnalogRadioService.SendTelegram" type="AnalogRadioService.RadioTelegramStructure"/>
+	<xs:complexType name="AnalogRadioService.RadioTelegramStructure">
+		<xs:sequence>
+			<xs:element name="RawTelegram" type="IBIS-IP.string"/>
+			<xs:element name="AnalogChannel" type="IBIS-IP.unsignedInt"/>
+			<xs:element name="Bitrate" type="BitrateEnumeration"/>
+			<xs:element name="Repeats" type="IBIS-IP.unsignedInt" minOccurs="0"/>
+			<xs:element name="MaxRepeatInterval" type="IBIS-IP.unsignedInt" minOccurs="0"/>
+			<xs:element name="Transmitter" type="TransmitterStructure" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransmitterStructure">
+		<xs:sequence>
+			<xs:element name="LeadTime" type="IBIS-IP.unsignedInt" minOccurs="0"/>
+			<xs:element name="HoldTime" type="IBIS-IP.unsignedInt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="BitrateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1200"/>
+			<xs:enumeration value="2400"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

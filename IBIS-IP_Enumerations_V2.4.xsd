@@ -1,0 +1,679 @@
+<?xml version="1.0"?>
+<!-- Mit XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) von Dirk Weißer (INIT GmbH) bearbeitet -->
+<!-- Mit XMLSpy v2017 rel. 3  (http://www.altova.com) von Peter Schussler (DResearch) bearbeitet, VideoDienste hinzugefügt -->
+<!-- Mit XMLSpy v2018 rel. 2  (http://www.altova.com) von Bernd Schubert (iris-GmbH) bearbeitet, IBIS-IP 2.1 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--==== Definition of Enumerations-->
+	<xs:simpleType name="ConnectionStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information whether a connection will rest protected</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ConnectionBroken"/>
+			<xs:enumeration value="ConnectionOK"/>
+			<xs:enumeration value="NoInformationAvailable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConnectionTypeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Value, which is necessary for distinction between an Interchange and a Connection</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Interchange"/>
+			<xs:enumeration value="ProtectedConnection"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DataIntervalEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DistanceData"/>
+			<xs:enumeration value="GNSSData"/>
+			<xs:enumeration value="Heartbeat"/>
+			<xs:enumeration value="NetworkLocationData"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceClassEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OnBoardUnit"/>
+			<xs:enumeration value="SideDisplay"/>
+			<xs:enumeration value="FrontDisplay"/>
+			<xs:enumeration value="InteriorDisplay"/>
+			<xs:enumeration value="Validator"/>
+			<xs:enumeration value="TicketVendingMachine"/>
+			<xs:enumeration value="AnnouncementSystem"/>
+			<xs:enumeration value="MMI"/>
+			<xs:enumeration value="VideoSystem"/>
+			<xs:enumeration value="APC"/>
+			<xs:enumeration value="MobileInterface"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="TestDevice"/>
+			<xs:enumeration value="MultiFunctionalDisplay"/>
+			<xs:enumeration value="CombiDevice"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="defective"/>
+			<xs:enumeration value="warning"/>
+			<xs:enumeration value="notavailable"/>
+			<xs:enumeration value="running"/>
+			<xs:enumeration value="readyForShutdown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceTaskEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="restart"/>
+			<xs:enumeration value="start_standby"/>
+			<xs:enumeration value="stop_standby"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorCountingObjectClassEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adult"/>
+			<xs:enumeration value="Bike"/>
+			<xs:enumeration value="Child"/>
+			<xs:enumeration value="Pram"/>
+			<xs:enumeration value="Wheelchair"/>
+			<xs:enumeration value="Unidentified"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorCountingQualityEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Defect"/>
+			<xs:enumeration value="Regular"/>
+			<xs:enumeration value="Sabotage"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorOpenStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the state of the doors in a vehicle</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DoorsOpen"/>
+			<xs:enumeration value="AllDoorsClosed"/>
+			<xs:enumeration value="SingleDoorOpen"/>
+			<xs:enumeration value="SingleDoorClosed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DoorOperationStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Locked"/>
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="EmergencyRelease"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ErrorCodeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DataEstimated"/>
+			<xs:enumeration value="FaultData"/>
+			<xs:enumeration value="NoScheduleDataAvailable"/>
+			<xs:enumeration value="DeviceMissing"/>
+			<xs:enumeration value="NoServiceResponse"/>
+			<xs:enumeration value="ImportantDataNotAvailable"/>
+			<xs:enumeration value="DataNotValid"/>
+			<xs:enumeration value="OperationNotSupported"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExitSideEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the ExitSide (sic!)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="both"/>
+			<xs:enumeration value="left"/>
+			<xs:enumeration value="right"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSCoordinateSystemEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the GNSS-Coordinate-System</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CH1903"/>
+			<xs:enumeration value="ETSR89"/>
+			<xs:enumeration value="IERS"/>
+			<xs:enumeration value="NAD27"/>
+			<xs:enumeration value="NAD83"/>
+			<xs:enumeration value="WGS84"/>
+			<xs:enumeration value="WGS72"/>
+			<xs:enumeration value="SGS85"/>
+			<xs:enumeration value="P90"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSQualityEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the GNSS-Quality</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dGPS"/>
+			<xs:enumeration value="Estimated"/>
+			<xs:enumeration value="GPS"/>
+			<xs:enumeration value="NotValid"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GNSSTypeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the type of GNSS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GPS"/>
+			<xs:enumeration value="Glonass"/>
+			<xs:enumeration value="Galileo"/>
+			<xs:enumeration value="Beidou"/>
+			<xs:enumeration value="IRNSS"/>
+			<xs:enumeration value="other"/>
+			<xs:enumeration value="DeadReckoning"/>
+			<xs:enumeration value="MixedGNSSTypes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JourneyModeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the kind of a trip</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NoTrip"/>
+			<xs:enumeration value="AdditionalTrip"/>
+			<xs:enumeration value="ServiceTrip"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LocationStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the location in a very general way</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AfterStop"/>
+			<xs:enumeration value="AtStop"/>
+			<xs:enumeration value="BeforeStop"/>
+			<xs:enumeration value="BetweenStop"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageTypeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Status"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Error"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RouteDeviationEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information whether the vehicle is onroute or offroute</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="onroute"/>
+			<xs:enumeration value="offroute"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RouteDirectionEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information on the general direction of a route</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Forward"/>
+			<xs:enumeration value="Backward"/>
+			<xs:enumeration value="Clockwise"/>
+			<xs:enumeration value="Counterclockwise"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceNameEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AnalogRadioService"/>
+			<xs:enumeration value="CustomerInformationService"/>
+			<xs:enumeration value="DeviceManagementService"/>
+			<xs:enumeration value="JourneyInformationService"/>
+			<xs:enumeration value="BeaconLocationService"/>
+			<xs:enumeration value="DistanceLocationService"/>
+			<xs:enumeration value="DoorStateService"/>
+			<xs:enumeration value="GNSSLocationService"/>
+			<xs:enumeration value="HTMLDisplayService"/>
+			<xs:enumeration value="NetworkLocationService"/>
+			<xs:enumeration value="PassengerCountingService"/>
+			<xs:enumeration value="SystemMonitoringService"/>
+			<xs:enumeration value="TestService"/>
+			<xs:enumeration value="TicketValidationService"/>
+			<xs:enumeration value="TicketingService"/>
+			<xs:enumeration value="TimeService"/>
+			<xs:enumeration value="TrainSetDataService"/>
+			<xs:enumeration value="TrainSetInformationService"/>
+			<xs:enumeration value="TrainSetManagementService"/>
+			<xs:enumeration value="VideoLiveService"/>
+			<xs:enumeration value="VideoRecordingService"/>
+			<xs:enumeration value="VideoDisplayService"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceStateEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="defective"/>
+			<xs:enumeration value="notrunning"/>
+			<xs:enumeration value="running"/>
+			<xs:enumeration value="standby"/>
+			<xs:enumeration value="starting"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SystemDocumentationInformationEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ErrorMessage"/>
+			<xs:enumeration value="StatusMessage"/>
+			<xs:enumeration value="WarningMessage"/>
+			<xs:enumeration value="All"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TicketRazziaInformationEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="razzia"/>
+			<xs:pattern value="norazzia"/>
+			<xs:enumeration value="razzia"/>
+			<xs:enumeration value="norazzia"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TicketValidationEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information about the result of ticket validation</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="valid"/>
+			<xs:enumeration value="notvalid"/>
+			<xs:enumeration value="NoCard"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VehicleModeEnumeration">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="air"/>
+			<xs:enumeration value="bus"/>
+			<xs:enumeration value="coach"/>
+			<xs:enumeration value="ferry"/>
+			<xs:enumeration value="metro"/>
+			<xs:enumeration value="rail"/>
+			<xs:enumeration value="tram"/>
+			<xs:enumeration value="underground"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TripStateEnumeration">
+		<xs:annotation>
+			<xs:documentation>Information about trip state,
+			EmptyRun: trips is selected but has not yet started ( e.g. drive from depot to first stop point )
+			OnTrip: on trip ,
+			OffTrip: trip has ended there is no next trip yet, ( e.g. drive to the depot )
+			TripBreak: trip has already started but there is a break now it will be continued ( e.g. driver break),
+			OffDuty: no trip, bus parked ( e.g. driver has logged of, OBU still running )
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EmptyRun"/>
+			<xs:enumeration value="OnTrip"/>
+			<xs:enumeration value="OffTrip"/>
+			<xs:enumeration value="TripBreak"/>
+			<xs:enumeration value="OffDuty"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PtSubModesEnumeration">
+		<xs:annotation>
+			<xs:documentation>compliant with NETEX</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="AirSubmode"/>
+			<xs:enumeration value="BusSubmode"/>
+			<xs:enumeration value="CoachSubmode"/>
+			<xs:enumeration value="FunicularSubmode"/>
+			<xs:enumeration value="MetroSubmode"/>
+			<xs:enumeration value="TramSubmode"/>
+			<xs:enumeration value="TelecabinSubmode"/>
+			<xs:enumeration value="RailSubmode"/>
+			<xs:enumeration value="WaterSubmode"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrivateSubModesEnumeration">
+		<xs:annotation>
+			<xs:documentation>compliant with NETEX</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="SelfDriveSubmode"/>
+			<xs:enumeration value="TaxiSubmode"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:group name="PtSubmodeChoiceGroup">
+		<xs:annotation>
+			<xs:documentation>PT Transport Sub Modes.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="AirSubmode"/>
+			<xs:element ref="BusSubmode"/>
+			<xs:element ref="CoachSubmode"/>
+			<xs:element ref="FunicularSubmode"/>
+			<xs:element ref="MetroSubmode"/>
+			<xs:element ref="TramSubmode"/>
+			<xs:element ref="TelecabinSubmode"/>
+			<xs:element ref="RailSubmode"/>
+			<xs:element ref="WaterSubmode"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="PrivateSubmodeChoiceGroup">
+		<xs:annotation>
+			<xs:documentation>Non PT Road Submodes.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="TaxiSubmode"/>
+			<xs:element ref="SelfDriveSubmode"/>
+		</xs:choice>
+	</xs:group>
+	<!-- ======================================================================= -->
+	<xs:element name="RailSubmode" type="RailSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti02 Rail submodes loc13.
+			See also See ERA B.4.7009 - Name: Item description code.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="RailSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Rail MODEs of TRANSPORT: TPEG pti_table_02, train link loc_table_13.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="local"/>
+			<xs:enumeration value="highSpeedRail">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (8 high speed train). Long distance train formed by a unit capable for high speed running on high speed or normal lines most modern train unit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="suburbanRailway">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: . (12 suburban) Regional train organised by the regional government public transport in and around cities, running on its own freeways underground or overground, operational running with signals</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="regionalRail">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code. (11 Regional) Regional train organised by the regional government even if formed by a unit capable for high speed running on high speed lines</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="interregionalRail">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (10 Interregional) Regional train running in more than one region.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="longDistance">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (9 Intercity). Long distance train formed by a unit capable for high speed or not running on high speed or normal lines modern train unit high quality service restricted stopping pattern</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="international"/>
+			<xs:enumeration value="sleeperRailService"/>
+			<xs:enumeration value="nightRail"/>
+			<xs:enumeration value="carTransportRailService">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (14 Motor rail) Service transporting passenger's motor vehicle passengers are admitted either with vehicle only or with or without vehicle Service mode</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="touristRailway">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (16 Historic train).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="airportLinkRail"/>
+			<xs:enumeration value="railShuttle"/>
+			<xs:enumeration value="replacementRailService"/>
+			<xs:enumeration value="specialTrain"/>
+			<xs:enumeration value="crossCountryRail"/>
+			<xs:enumeration value="rackAndPinionRailway">
+				<xs:annotation>
+					<xs:documentation>See ERA B.4.7009 - Name: Item description code: (15 Mountain train) Local train adapted for running in mountain railway lines.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="CoachSubmode" type="CoachSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti03 Coach submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="CoachSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Coach MODEs of TRANSPORT: TPEG pti_table_03.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="internationalCoach"/>
+			<xs:enumeration value="nationalCoach"/>
+			<xs:enumeration value="shuttleCoach"/>
+			<xs:enumeration value="regionalCoach"/>
+			<xs:enumeration value="specialCoach"/>
+			<xs:enumeration value="schoolCoach"/>
+			<xs:enumeration value="sightseeingCoach"/>
+			<xs:enumeration value="touristCoach"/>
+			<xs:enumeration value="commuterCoach"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="MetroSubmode" type="MetroSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti04 Metro submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="MetroSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Metro MODEs of TRANSPORT: TPEG pti_table_04.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="metro"/>
+			<xs:enumeration value="tube"/>
+			<xs:enumeration value="urbanRailway"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="BusSubmode" type="BusSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti05 Bus submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="BusSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Bus MODEs of TRANSPORT: TPEG pti_table_05, col_table_10.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="localBus"/>
+			<xs:enumeration value="regionalBus"/>
+			<xs:enumeration value="expressBus"/>
+			<xs:enumeration value="nightBus"/>
+			<xs:enumeration value="postBus"/>
+			<xs:enumeration value="specialNeedsBus"/>
+			<xs:enumeration value="mobilityBus"/>
+			<xs:enumeration value="mobilityBusForRegisteredDisabled"/>
+			<xs:enumeration value="sightseeingBus"/>
+			<xs:enumeration value="shuttleBus"/>
+			<xs:enumeration value="highFrequencyBus"/>
+			<xs:enumeration value="dedicatedLaneBus"/>
+			<xs:enumeration value="schoolBus"/>
+			<xs:enumeration value="schoolAndPublicServiceBus"/>
+			<xs:enumeration value="railReplacementBus"/>
+			<xs:enumeration value="demandAndResponseBus"/>
+			<xs:enumeration value="airportLinkBus"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="TramSubmode" type="TramSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti06 Tram submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="TramSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Tram MODEs of TRANSPORT: TPEG pti_table_06, col_table_12.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="cityTram"/>
+			<xs:enumeration value="localTram"/>
+			<xs:enumeration value="regionalTram"/>
+			<xs:enumeration value="sightseeingTram"/>
+			<xs:enumeration value="shuttleTram"/>
+			<xs:enumeration value="trainTram"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="WaterSubmode" type="WaterSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti07 Water submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="WaterSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Water MODEs of TRANSPORT: TPEG pti_table_07.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="internationalCarFerry"/>
+			<xs:enumeration value="nationalCarFerry"/>
+			<xs:enumeration value="regionalCarFerry"/>
+			<xs:enumeration value="localCarFerry"/>
+			<xs:enumeration value="internationalPassengerFerry"/>
+			<xs:enumeration value="nationalPassengerFerry"/>
+			<xs:enumeration value="regionalPassengerFerry"/>
+			<xs:enumeration value="localPassengerFerry"/>
+			<xs:enumeration value="postBoat"/>
+			<xs:enumeration value="trainFerry"/>
+			<xs:enumeration value="roadFerryLink"/>
+			<xs:enumeration value="airportBoatLink"/>
+			<xs:enumeration value="highSpeedVehicleService"/>
+			<xs:enumeration value="highSpeedPassengerService"/>
+			<xs:enumeration value="sightseeingService"/>
+			<xs:enumeration value="schoolBoat"/>
+			<xs:enumeration value="cableFerry"/>
+			<xs:enumeration value="riverBus"/>
+			<xs:enumeration value="scheduledFerry"/>
+			<xs:enumeration value="shuttleFerryService"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="AirSubmode" type="AirSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti08 Air submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="AirSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Air MODEs of TRANSPORT: TPEG pti_table_08.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="internationalFlight"/>
+			<xs:enumeration value="domesticFlight"/>
+			<xs:enumeration value="intercontinentalFlight"/>
+			<xs:enumeration value="domesticScheduledFlight"/>
+			<xs:enumeration value="shuttleFlight"/>
+			<xs:enumeration value="intercontinentalCharterFlight"/>
+			<xs:enumeration value="internationalCharterFlight"/>
+			<xs:enumeration value="roundTripCharterFlight"/>
+			<xs:enumeration value="sightseeingFlight"/>
+			<xs:enumeration value="helicopterService"/>
+			<xs:enumeration value="domesticCharterFlight"/>
+			<xs:enumeration value="SchengenAreaFlight"/>
+			<xs:enumeration value="airshipService"/>
+			<xs:enumeration value="shortHaulInternationalFlight"/>
+			<xs:enumeration value="canalBarge">
+				<xs:annotation>
+					<xs:documentation source="Not in TPEG"/>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="TelecabinSubmode" type="TelecabinSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti09 Telecabin submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="TelecabinSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Telecabin MODEs of TRANSPORT: TPEG pti_table_09, col_table_14.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="telecabin"/>
+			<xs:enumeration value="cableCar"/>
+			<xs:enumeration value="lift"/>
+			<xs:enumeration value="chairLift"/>
+			<xs:enumeration value="dragLift"/>
+			<xs:enumeration value="telecabinLink"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="FunicularSubmode" type="FunicularSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti10 Funicular submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="FunicularSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Funicular MODEs of TRANSPORT: TPEG pti_table_10.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="funicular"/>
+			<xs:enumeration value="streetCableCar"/>
+			<xs:enumeration value="allFunicularServices"/>
+			<xs:enumeration value="undefinedFunicular"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="TaxiSubmode" type="TaxiSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti11 Taxi submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="TaxiSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for Taxi MODEs of TRANSPORT: TPEG pti_table_11.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="communalTaxi"/>
+			<xs:enumeration value="charterTaxi"/>
+			<xs:enumeration value="waterTaxi"/>
+			<xs:enumeration value="railTaxi"/>
+			<xs:enumeration value="bikeTaxi"/>
+			<xs:enumeration value="blackCab"/>
+			<xs:enumeration value="miniCab"/>
+			<xs:enumeration value="allTaxiServices"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+	<xs:element name="SelfDriveSubmode" type="SelfDriveSubmodeEnumeration" default="unknown">
+		<xs:annotation>
+			<xs:documentation>TPEG pti12 SelfDrive submodes.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="SelfDriveSubmodeEnumeration">
+		<xs:annotation>
+			<xs:documentation>Values for SelfDrive MODEs of TRANSPORT: TPEG pti_table_12.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="unknown"/>
+			<xs:enumeration value="undefined"/>
+			<xs:enumeration value="hireCar"/>
+			<xs:enumeration value="hireVan"/>
+			<xs:enumeration value="hireMotorbike"/>
+			<xs:enumeration value="hireCycle"/>
+			<xs:enumeration value="allHireVehicles"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ======================================================================= -->
+</xs:schema>
